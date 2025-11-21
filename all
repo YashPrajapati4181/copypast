@@ -1,0 +1,4372 @@
+[23-09-2025 15:05] Jignesh Class Room: module 1 
+
+
+skill builder
+
+
+Ragul
+
+
+
+import numpy as np
+
+rows = int(input())
+cols = int(input())
+
+user_array = np.array([list(map(int, input().split()))for i in range(rows)])
+
+print("Original Array:")
+print(user_array)
+print("\nTransposed Array:")
+print(user_array.transpose())
+
+
+
+Mrs.patel
+
+
+
+import pandas as pd
+import math
+N = int(input())
+scores = list(map(int, input().split()))
+freq = [0,0,0,0,0]
+total= 0
+for x in scores:
+    total += x
+    if 0 <= x < 20:
+        freq[0] += 1
+    elif 20 <= x < 40:
+        freq[1] += 1
+    elif 40 <= x < 60:
+        freq[2] += 1
+    elif 60 <= x < 80:
+        freq[3] += 1
+    elif 80 <= x <= 100:
+        freq[4] += 1
+mean = total / N
+variance = sum((x - mean) ** 2 for x in scores)/ (N - 1)
+std_dev = math.sqrt(variance)
+print("Frequency Distribution Table:")
+print(" Total score Frequency")
+print(f"1    0-20    {freq[0]}")
+print(f"2    20-40   {freq[1]}")
+print(f"3    40-60   {freq[2]}")
+print(f"4    60-80   {freq[3]}")
+print(f"5    80-100  {freq[4]}")
+print(f"6    Total   {N}")
+print()
+print(f"Mean: {mean:.2f}")
+print(f"Variance: {variance:.2f}")
+print(f"Standard Deviation: {std_dev:.2f}")
+
+
+
+Raja
+
+
+
+
+
+import numpy as np
+prices_str = input().split()
+prices_list = [int(p) for p in prices_str]
+prices_array = np.array(prices_list)
+prices_expanded = np.expand_dims(prices_array, axis=1)
+prices_squeezed = np.squeeze(prices_expanded)
+median_price = np.median(prices_array)
+mean_price = np.mean(prices_array)
+print(f"Median Price : {median_price:.2f}")
+print(f"Mean Price: {mean_price:.2f}")
+
+
+
+Meenu
+
+
+
+
+import numpy as np
+r = int(input())
+c = int(input())
+array_elements = []
+for _ in range(r):
+    row = list(map(int, input().split()))
+    array_elements.append(row)
+    
+original_array = np.array(array_elements)
+diagonal_elements = np.diag(original_array)
+print("Original 2D Array :")
+print(original_array)
+print("Diagonal Slice:")
+print(f"[{' '.join(map(str, diagonal_elements))}]")
+
+
+
+Divin
+
+
+
+
+
+
+import pandas as pd
+import numpy as np
+
+n = int(input())
+
+
+users = []
+for _ in range(n):
+    line = input()
+    users.append(line.split(' '))
+
+# print(users)
+cols = ['name','age','flight_id','state','rate']
+
+df = pd.DataFrame(users,columns = cols)
+print(df)
+df_updated = df.drop(['age','state'],axis = 1)
+
+print(df_updated)
+print(df_updated.shape[1])
+print(np.array(df_updated.columns))
+[23-09-2025 15:05] Jignesh Class Room: module 1
+
+challenge yourself
+
+
+kamal
+
+
+import numpy as np
+n = int(input())
+arr = []
+for _ in range(n):
+    arr.append(int(input()))
+    
+original_array = np.array(arr)
+reversed_array = np.flip(original_array)
+expanded_array = np.concatenate((original_array, reversed_array))
+reshaped_array = np.expand_dims(expanded_array,axis=0)
+print("Original array:")
+print(original_array)
+print("Expanded array:")
+print(reshaped_array)
+
+
+Roshan
+
+
+
+import numpy as np
+def solve():
+    n,m = map(int , input().split())
+    
+    arr =[]
+    for i in range(n):
+        arr.append(list(map(int , input().split())))
+    np_arr = np.array(arr)
+    sorted_row_wise = np.sort(np_arr , axis=1)
+    print("Sorted based on last axis(1):")
+    print(sorted_row_wise)
+    flattened_array = np.sort(np_arr.flatten())
+    print("sorted flattened array:")
+    print(flattened_array)
+    sorted_column_wise = np.sort(np_arr ,axis=0)
+    print("sorted based on axis 0:")
+    print(sorted_column_wise)
+    
+solve()    
+
+
+
+
+Ava
+
+
+
+
+
+
+import numpy as np
+import pandas as pd
+import sys
+
+values = list(map(int, sys.stdin.read().split()))
+arr = np.array(values)
+
+bins = [
+        ("0-100", (0, 100)),
+        ("101-200", (101, 200)),
+        ("201-300", (201, 300)),
+        ("301-400", (301, 400)),
+        ("400+", (401, float('inf')))
+    ]
+summary = []
+for label, (low, high) in bins:
+    sub = arr[(arr >= low) & (arr <= high)]
+    freq = len(sub)
+    mean = round(np.mean(sub), 2) if freq else "-"
+    summary.append({
+        "Interval": label,
+        "Frequency": freq,
+        "Mean Consumption": mean
+    })
+    
+total_mean = round(np.mean(arr), 2)
+summary.append({
+    "Interval": "Total",
+    "Frequency": len(arr),
+    "Mean Consumption": total_mean
+})
+
+print("Electricity Consumption Summary")
+print(pd.DataFrame(summary).to_string(index = False))
+
+print(f"\nOverall Mean Consumption: {total_mean} kWh")
+print(f"Variance: {round(np.var(arr, ddof = 1), 2)}")
+print(f"Standard Deviation: {round(np.std(arr, ddof = 1), 2)}")
+[23-09-2025 15:05] Jignesh Class Room: module 1
+practice at home
+
+liam
+
+import pandas as pd
+import numpy as np
+
+production_values = list(map(int, input().split()))
+
+categories = {
+    "Low (0-99)":0,
+    "Moderate (100-199)":0,
+    "High (200-299)":0,
+    "Excellent (300+)":0,
+}
+
+for value in production_values:
+    if 0 <= value <= 99:
+        categories["Low (0-99)"] += 1
+    elif 100 <= value <= 199:
+        categories["Moderate (100-199)"] += 1
+    elif 200 <= value <= 299:
+        categories["High (200-299)"] += 1
+    else:
+        categories["Excellent (300+)"] += 1
+        
+df = pd.DataFrame({
+    "production Level": list(categories.keys()),
+    "Frequency": list(categories.values())
+})       
+
+mean = round(np.mean(production_values), 2)
+variance = round(np.var(production_values,ddof=1), 2)
+std_dev = round(np.std(production_values,ddof=1),2)
+
+print("Daily Production Analysis")
+print(df.to_string(index=False))
+print(f"Average Production: {mean}")
+print(f"Variance: {variance}")
+print(f"Standard Deviation: {std_dev}")
+
+
+bob
+
+
+import numpy as np
+num_people = int(input())
+dtype = [('name','U10'),('age','i4'),('height','i4')]
+data = []
+for _ in range(num_people):
+    name, age, height = input().split()
+    data.append((name,int(age),int(height)))
+    
+participants = np.array(data, dtype=dtype)
+sorted_participants = np.sort(participants, order='height')
+print(sorted_participants)
+
+
+ishann
+
+
+import numpy as np
+R = int(input())
+C = int(input())
+elements = list(map(int, input().split()))
+matrix = []
+index = 0
+for i in range(R):
+    row = []
+    for j in range(C):
+        row.append(elements[index])
+        index += 1
+    matrix.append(row)
+    
+for i in range(min(R, C)):
+    matrix[i][i] = 0
+    
+print("[", end="")
+for i in range(R):
+    print("[", end="")
+    for j in range(C):
+        print(matrix[i][j], end ="" if j < C -1 else "")
+    print("]", end="\n" if i < R - 1 else "")
+print("]")
+
+
+
+billa
+
+
+import pandas as pd
+data = []
+for _ in range(3):
+    name, price, quantity = input().split()
+    price = float(price)
+    quantity = int(quantity)
+    total = "{:.2f}".format(price * quantity)
+    data.append([name, price, quantity, total])
+    
+df = pd.DataFrame(data, columns=['Food Name','price','Quantity','Total Price'])
+print(df)
+[23-09-2025 15:05] Jignesh Class Room: MODULE 4
+PRACTICE AT HOME
+
+David
+
+
+import os
+import sys
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score,classification_report,confusion_matrix
+
+fp = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(fp)
+
+encoders = {}
+for column in df.columns:
+    if column != "Play":
+        le = LabelEncoder()
+        df[column] = le.fit_transform(df[column])
+        encoders[column] = le
+        
+df['Play'] = df['Play'].map({'No': 0, 'Yes': 1})
+x = df.drop("Play", axis=1)
+y = df['Play']
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=42,stratify=y)
+
+model = GaussianNB()
+model.fit(x_train,y_train)
+y_pred = model.predict(x_test)
+
+acc = accuracy_score(y_test,y_pred) * 100
+print(f"Accuracy: {acc:.2f}%\n")
+print("Classification Report:")
+print(classification_report(y_test,y_pred,zero_division=1))
+print("Confusion Matrix:")
+print(confusion_matrix(y_test,y_pred))
+
+
+
+Priya
+
+
+
+
+import os
+import sys
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+file_path = os.path.join(sys.path[0], input().strip())
+data = pd.read_csv(file_path)
+
+data.replace('?',np.nan, inplace=True)
+data.dropna(subset=['bare_nucleoli'],inplace=True)
+data['bare_nucleoli'] = pd.to_numeric(data['bare_nucleoli'])
+
+X = data.drop(['id','class'],axis=1)
+y = data['class']
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42,stratify=y)
+
+model = GaussianNB()
+model.fit(X_train,y_train)
+y_pred = model.predict(X_test)
+
+acc = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {acc:.4f}")
+
+labels = [2,4]
+cm = confusion_matrix(y_test,y_pred,labels=labels)
+print("Confusion Matrix:")
+print(cm)
+
+print("Classification Report:")
+print(classification_report(y_test, y_pred,labels=labels,digits=2))
+
+
+
+Arjun
+
+
+
+
+import os
+import sys
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+file_path = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(file_path)
+
+X = df.drop('Wine',axis=1)
+y = df['Wine']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42,stratify=y)
+
+model = GaussianNB()
+model.fit(X_train,y_train)
+
+y_pred = model.predict(X_test)
+
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+re = classification_report(y_test,y_pred,digits=2)
+
+print(f"Accuracy: {acc:.4f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(re)
+
+
+
+Leena
+
+
+
+
+import os
+import sys
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score,classification_report
+# from sklearn.metrics import accuracy_score,classification_report
+
+def preprocess_data(file_name):
+    df = pd.read_csv(file_name)
+    
+    df['Age'].fillna(df['Age'].median(), inplace=True)
+    df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
+
+    le_sex = LabelEncoder()
+    le_embarked  = LabelEncoder()
+    df['Sex'] = le_sex.fit_transform(df['Sex'])
+    df['Embarked'] = le_embarked.fit_transform(df['Embarked'])
+    
+    ft = ['Pclass','Sex','Age','SibSp','Parch','Fare','Embarked']
+    x = df[ft]
+    y = df['Survived']
+    return x,y
+    
+def train_and_evalute(x,y):
+    x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=42,stratify=y)
+    ml = GaussianNB()
+    ml.fit(x_train,y_train)
+    y_pred = ml.predict(x_test)
+    
+    ac = accuracy_score(y_test,y_pred)
+    re = classification_report(y_test,y_pred,zero_division=0)
+    return ac,re
+
+def main():
+    file_name = os.path.join(sys.path[0], input().strip())
+    x,y = preprocess_data(file_name)
+    ac,re = train_and_evalute(x,y)
+    print(f"Accuracy: {ac:.2f}")
+    print(re)
+    
+if _name_ == "_main_":
+    main()
+[23-09-2025 15:05] Jignesh Class Room: MODULE 5
+CHALLENGE YOURSELF
+
+
+
+Alex
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB 
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(fp)
+
+for col in df.select_dtypes(include=['object']).columns:
+    df[col].fillna(df[col].mode()[0],inplace=True)
+    
+X = df['Transaction Description']
+y = df['Category']
+
+vectorizer = CountVectorizer(stop_words='english')
+X_vec = vectorizer.fit_transform(X)
+
+X_train,X_test,y_train,y_test = train_test_split(X_vec,y,test_size=0.2,random_state=42)
+model = MultinomialNB()
+model.fit(X_train,y_train)
+
+y_pred = model.predict(X_test)
+acc = accuracy_score(y_test,y_pred)
+print(f"Accuracy: {acc:.2f}")
+
+cm = confusion_matrix(y_test,y_pred)
+print("Confusion Matrix:")
+print(cm)
+
+print("Classification Report:")
+cr = classification_report(y_test,y_pred,zero_division=1)
+print(cr)
+print()
+
+
+
+
+Adhul
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+for col in df.select_dtypes(include=['object']).columns:
+    df[col].fillna(df[col].mode()[0],inplace=True)
+
+df['Sentiment'] = df['Sentiment'].map({'Negative':0,'Positive':1})   
+X = df['Feedback']
+y = df['Sentiment']
+
+vectorizer = CountVectorizer(stop_words='english')
+X_vec = vectorizer.fit_transform(X)
+
+X_train,X_test,y_train,y_test = train_test_split(X_vec,y,test_size=0.2,random_state=42,stratify=y)
+ 
+model = MultinomialNB()
+model.fit(X_train,y_train)
+
+y_pred = model.predict(X_test)
+
+acc = accuracy_score(y_test,y_pred)
+print(f"Accuracy: {acc:.2f}")
+
+cm = confusion_matrix(y_test,y_pred)
+print("Confusion Matrix:")
+print(cm)
+
+print("Classification Report:")
+cr = classification_report(y_test,y_pred,zero_division=1)
+print(cr)
+
+
+
+Olivia
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(fp)
+
+for col in df.select_dtypes(include=['number']).columns:
+    df[col].fillna(df[col].mean(),inplace=True)
+for col in df.select_dtypes(include=['object']).columns:
+    df[col].fillna(df[col].mode()[0],inplace=True)
+    
+df['Satisfaction'] = df['Satisfaction'].map({'Not Satisfied':0,'Satisfied':1})
+X = df['SurveyResponse']
+y = df['Satisfaction']
+
+vectorizer = CountVectorizer(stop_words='english')
+X_vec = vectorizer.fit_transform(X)
+
+X_train,X_test,y_train,y_test = train_test_split(X_vec,y,test_size=0.2,random_state=42,stratify=y)
+
+model = MultinomialNB()
+model.fit(X_train,y_train)
+
+y_pred = model.predict(X_test)
+acc = accuracy_score(y_test,y_pred)
+print(f"Accuracy: {acc:.2f}")
+cm = confusion_matrix(y_test,y_pred)
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+cr = classification_report(y_test,y_pred,labels=[0,1],zero_division=1)
+print(cr)
+[23-09-2025 15:05] Jignesh Class Room: MODULE 5
+
+PRACTICE AT HOME
+
+Sasha
+
+import os
+import sys
+import csv
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score,classification_report,confusion_matrix
+
+filepath = os.path.join(sys.path[0], input().strip())
+reviews = []
+labels = []
+
+with open(filepath,'r',encoding='utf-8',newline='') as file:
+    reader = csv.reader(file)
+    header = next(reader)
+    
+    for row in reader:
+        if len(row) < 2:
+            continue
+        sentiment = row[-1].strip()
+        review_text = ",".join(row[:-1])
+        reviews.append(review_text)
+        labels.append(sentiment)
+
+class_counts = {label:labels.count(label) for label in set(labels)}
+use_stratify = all(count >= 2 for count in class_counts.values())
+
+X_train,X_test,y_train,y_test = train_test_split(reviews,labels,test_size=0.2,random_state=42,stratify=labels if use_stratify else None)
+
+vectorizer = TfidfVectorizer(stop_words='english',max_features=5000)
+X_train_tfidf = vectorizer.fit_transform(X_train)
+X_test_tfidf = vectorizer.transform(X_test)
+
+model = MultinomialNB()
+model.fit(X_train_tfidf,y_train)
+y_pred = model.predict(X_test_tfidf)
+
+acc = accuracy_score(y_test,y_pred) * 100
+cr = classification_report(y_test,y_pred,zero_division=0)
+cm = confusion_matrix(y_test,y_pred)
+print(f"Accuracy: {acc:.2f}%")
+print("Classification Report:")
+print(cr)
+print("Confusion Matrix:")
+print(cm)
+
+
+
+Lena
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.metrics import accuracy_score,classification_report,confusion_matrix
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+
+df = df.dropna(subset=['reviewText','overall'])
+df['overall'] = df['overall'].astype(str)
+
+X = df['reviewText']
+y = df['overall']
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)
+
+vectorizer = TfidfVectorizer(stop_words='english',max_features=5000)
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+model = MultinomialNB()
+model.fit(X_train_vec,y_train)
+
+y_pred = model.predict(X_test_vec)
+
+acc = accuracy_score(y_test,y_pred) * 100
+cr = classification_report(y_test,y_pred,zero_division=0)
+cm = confusion_matrix(y_test,y_pred)
+print(f"Accuracy: {acc:.2f}%")
+print("Classification Report:")
+print(cr)
+print("Confusion Matrix:")
+print(cm)
+
+
+
+David
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+X = df['Text']
+y = df['Label']
+
+vectorizer = CountVectorizer(stop_words='english')
+X_vec = vectorizer.fit_transform(X)
+
+X_train,X_test,y_train,y_test = train_test_split(X_vec,y,test_size=0.2,random_state=42,stratify=y)
+
+model = MultinomialNB()
+model.fit(X_train,y_train)
+y_pred = model.predict(X_test)
+
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred,zero_division=1)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(cr)
+
+
+
+
+Jamie
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score,classification_report,confusion_matrix
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+df = df.dropna(subset=['text','airline_sentiment'])
+
+X = df['text']
+y = df['airline_sentiment']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42,stratify=y)
+
+vectorizer = CountVectorizer(stop_words='english',max_features=5000)
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+model = MultinomialNB()
+model.fit(X_train_vec,y_train)
+y_pred = model.predict(X_test_vec)
+
+acc = accuracy_score(y_test,y_pred) * 100
+cr = classification_report(y_test,y_pred,labels=['negative','neutral','positive'],zero_division=0)
+cm = confusion_matrix(y_test,y_pred,labels=['negative','neutral','positive'])
+print(f"Accuracy: {acc:.2f}%")
+print("Classification Report:")
+print(cr)
+print("Confusion MAtrix:")
+print(cm)
+[23-09-2025 15:05] Jignesh Class Room: MODULE 5
+
+SKILL BUILDER
+
+
+Jegan
+
+
+import pandas as pd
+import os
+import sys
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score,recall_score,classification_report
+
+filepath = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(filepath)
+X = df['document']
+y = df['label']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+
+vectorizer = CountVectorizer()
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+model = MultinomialNB()
+model.fit(X_train_vec,y_train)
+y_pred = model.predict(X_test_vec)
+
+acc = accuracy_score(y_test,y_pred)
+print(f"Accuracy: {acc:.2f}")
+
+mr = recall_score(y_test,y_pred,average='macro',zero_division=0)
+print(f"Recall: {mr:.2f}")
+
+print("\nClassification Report:")
+print(classification_report(y_test,y_pred,digits=2,zero_division=0))
+
+
+
+Dwashik
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score,precision_score
+
+filepath = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(filepath)
+
+X = df['document']
+y = df['label']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)
+
+vectorizer = CountVectorizer()
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+model = MultinomialNB()
+model.fit(X_train_vec,y_train)
+
+y_pred = model.predict(X_test_vec)
+
+acc = accuracy_score(y_test,y_pred)
+pre = precision_score(y_test,y_pred,pos_label='Yes',zero_division=1)
+
+print(f"Accuracy: {acc:.2f}")
+print(f"Precision: {pre:.2f}")
+
+
+
+
+James
+
+
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score,classification_report
+
+filepath = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(filepath)
+
+X = df['document']
+y = df['label']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)
+
+vectorizer = CountVectorizer()
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+model = MultinomialNB()
+model.fit(X_train_vec,y_train)
+
+y_pred = model.predict(X_test_vec)
+
+acc = accuracy_score(y_test,y_pred)
+cr = classification_report(y_test,y_pred,zero_division=1)
+
+print(f"Accuracy: {acc:.2f}")
+print("Classification Report:")
+print(cr)
+
+
+
+
+Kenichi
+
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score,recall_score
+
+filepath = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(filepath)
+
+X = df['Item']
+y = df['Quality']
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+
+vectorizer = CountVectorizer()
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+model = MultinomialNB()
+model.fit(X_train_vec,y_train)
+
+y_pred = model.predict(X_test_vec)
+
+acc = accuracy_score(y_test,y_pred)
+re = recall_score(y_test,y_pred,average='macro',zero_division=1)
+
+print(f"Accuracy: {acc:.2f}")
+print(f"Recall: {re:.2f}")
+
+
+
+Reena
+
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+filepath = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(filepath)
+
+num_cols = df.select_dtypes(include=['number']).columns
+for col in num_cols:
+    df[col].fillna(df[col].mean(),inplace=True)
+
+vectorizer = CountVectorizer(stop_words='english')
+X = vectorizer.fit_transform(df.iloc[:, 0])
+y = df.iloc[:, 1].apply(lambda x: 1 if str(x).strip().lower() == 'spam' else 0)
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42,stratify=y)
+
+X_train_dense = X_train.toarray()
+X_test_dense = X_test.toarray()
+
+model = GaussianNB()
+model.fit(X_train_dense,y_train)
+
+y_pred = model.predict(X_test_dense)
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred,zero_division=1)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(cr)
+[23-09-2025 15:05] Jignesh Class Room: MODULE 6
+
+
+SKILL BUILDER
+
+Samira
+
+import os
+import sys
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier,export_text
+
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+    
+for col in df.columns:
+    if df[col].dtype == 'object':
+        df[col] = df[col].str.strip()
+            
+X = df.drop('PlayTennis',axis=1)
+y = df['PlayTennis']
+    
+le_dict = {}
+for col in X.columns:
+    le = LabelEncoder()
+    X[col] = le.fit_transform(X[col])
+    le_dict[col] = le
+        
+target_encoder = LabelEncoder()
+y = target_encoder.fit_transform(y)
+clf = DecisionTreeClassifier(criterion='entropy',random_state=42)
+clf.fit(X,y)
+    
+tr = export_text(clf, feature_names = list(X.columns))
+print(tr)
+                
+
+
+Elena
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+
+df = df.rename(columns={'Class':'target'})
+df['target'] = df['target'] - 1
+
+X = df.drop('target',axis=1)
+y = df['target']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+clf = DecisionTreeClassifier(criterion='entropy',max_depth=3,random_state=42)
+clf.fit(X_train,y_train)
+y_pred = clf.predict(X_test)
+
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(cr)
+
+
+Maya
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+df = df.replace("?",pd.NA)
+
+for col in df.columns:
+    if col not in ['id', 'class']:
+        df[col] = pd.to_numeric(df[col],errors='coerce')
+        
+for col in df.columns:
+    if col not in ['id', 'class']:
+        df[col] = df[col].fillna(df[col].mode()[0])
+
+df = df.rename(columns={'class':'target'})
+
+df['target'] = df['target'] - df['target'].min()
+X = df.drop(['id','target'],axis=1)
+y = df['target']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+clf = DecisionTreeClassifier(criterion='entropy',max_depth=3,random_state=42)
+clf.fit(X_train,y_train)
+
+y_pred = clf.predict(X_test)
+
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(cr)
+
+
+
+
+An environmental
+
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier,export_text
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+df = df.replace({"TRUE":1,"FALSE":0})
+
+if 'legs' in df.columns:
+    df['legs'] = pd.to_numeric(df['legs'],errors='coerce')
+    df['legs'] = df['legs'].fillna(0).astype(int)
+    
+X = df.drop('type',axis=1)
+y = df['type']
+
+le_dict = {} 
+for col in X.columns:
+    if X[col].dtype == 'object':
+        le = LabelEncoder()
+        X[col] = le.fit_transform(X[col])
+        le_dict[col] = le
+        
+target_encoder = LabelEncoder()
+y = target_encoder.fit_transform(y)
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+
+clf = DecisionTreeClassifier(criterion='entropy',random_state=42)
+clf.fit(X_train,y_train)
+
+print("Decision Tree (ID3) textual representation:")
+tree_text = export_text(clf, feature_names=list(X.columns))
+print(tree_text)
+
+y_pred = clf.predict(X_test)
+acc = accuracy_score(y_test,y_pred) * 100
+print(f"Accuracy on test set: {acc:.2f}%")
+
+
+
+Lucas
+
+
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+df = df.drop(['PassengerId','Name','Ticket','Cabin'],axis=1)
+
+df['Age'] = df['Age'].fillna(df['Age'].median())
+df['Fare'] = df['Fare'].fillna(df['Fare'].median())
+df['Embarked'] = df['Embarked'].fillna(df['Embarked'].mode()[0])
+df['Sex'] = df['Sex'].map({'male':0,'female':1})
+df['Embarked'] = df['Embarked'].map({'S':0,'C':1,'Q':2})
+
+X = df.drop('Survived',axis=1)
+y = df['Survived']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+clf = DecisionTreeClassifier(criterion='entropy',max_depth=3,random_state=42)
+clf.fit(X_train,y_train)
+y_pred = clf.predict(X_test)
+
+acc = accuracy_score(y_test,y_pred)
+cm  = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred)
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(cr)
+[23-09-2025 15:05] Jignesh Class Room: MODULE 6
+
+CHALLENGE YOURSELF
+
+Priya, a medical data 
+
+import os
+import sys
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+
+cols_to_fix = ['Glucose','BloodPressure','SkinThickness','Insulin','BMI']
+for col in cols_to_fix:
+    median_val = df[col].replace(0,np.nan).median()
+    df[col] = df[col].replace(0,median_val)
+    
+X = df.drop("Outcome",axis=1)
+y = df["Outcome"]
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+clf = DecisionTreeClassifier(criterion="entropy",max_depth=4,random_state=42)
+clf.fit(X_train,y_train)
+
+y_pred = clf.predict(X_test)
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred)
+
+print(f"Accuracy: {acc:.2f}")
+print("\nConfusion Matrix:")
+print(cm)
+print("\nClassification Report:")
+print(cr)
+
+
+
+A physics teacher named Mr. Rao
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier,export_text
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+df.columns = [c.strip() for c in df.columns]
+
+y = df.iloc[:,0]
+X = df.iloc[:,1:]
+
+clf = DecisionTreeClassifier(criterion="entropy",random_state=42)
+clf.fit(X,y)
+tr = export_text(clf,feature_names=list(X.columns))
+
+print("Decision Tree (Text Format):")
+print(tr)
+
+
+Rahul, a clinical data scientist,
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+
+df.columns = [c.strip() for c in df.columns]
+if 'target' not in df.columns:
+    raise ValueError("The dataset must contain a 'target' column")
+X = df.drop('target',axis=1)
+y = df['target']
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+
+clf = DecisionTreeClassifier(criterion='entropy',max_depth=4,random_state=42)
+clf.fit(X_train,y_train)
+
+y_pred = clf.predict(X_test)
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print()
+print("Classification Report:")
+print(cr)
+[23-09-2025 15:05] Jignesh Class Room: MODULE 6
+
+Practice at Home
+
+Dr. Asha, a clinical researcher
+
+import os
+import sys
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+data = pd.read_csv(fp)
+
+if 'protime' in data.columns:
+    data = data.dropna(subset=[col for col in data.columns if col != 'protime'])
+    
+for col in data.columns:
+    if data[col].isnull().sum() > 0:
+        mode_val = data[col].mode()[0]
+        data[col] = data[col].fillna(mode_val)
+        
+data = data.astype(str)
+le = LabelEncoder()
+for col in data.columns:
+    data[col] = le.fit_transform(data[col])
+    
+X = data.drop('class',axis=1)
+y = data['class']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+clf = DecisionTreeClassifier(criterion='entropy',max_depth=4,random_state=42)
+clf.fit(X_train,y_train)
+y_pred = clf.predict(X_test)
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred,zero_division=0)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(cr)
+
+
+Dr. Ravi, a plant pathologist
+
+import os
+import sys
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+df = df.rename(columns={"Class":"target"})
+
+for col in df.columns:
+    df[col].fillna(df[col].mode()[0],inplace=True)
+    
+le = LabelEncoder()
+for col in df.columns:
+    if df[col].dtype == "object":
+        df[col] = le.fit_transform(df[col])
+        
+X = df.drop("target",axis=1)
+y = df["target"]
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+clf = DecisionTreeClassifier(criterion="entropy",max_depth=5,random_state=42)
+clf.fit(X_train,y_train)
+y_pred = clf.predict(X_test)
+
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred,zero_division=0)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print()
+print("Classification Report:")
+print(cr)
+
+Jordan, a data scientist 
+
+
+import os
+import sys
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(fp)
+
+df = df.replace("?",pd.NA)
+df = df.dropna()
+label_encoders = {}
+for col in df.select_dtypes(include=['object']).columns:
+    le = LabelEncoder()
+    df[col] = le.fit_transform(df[col])
+    label_encoders[col] = le
+    
+X = df.drop("income",axis=1)
+y = df["income"]
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+clf = DecisionTreeClassifier(criterion="entropy",max_depth=5,random_state=42)
+clf.fit(X_train,y_train)
+y_pred = clf.predict(X_test)
+
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred,zero_division=0)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(cr)
+
+
+Leena, a food quality 
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+fp = os.path.join(sys.path[0],input().strip())
+data = pd.read_csv(fp)
+
+data['label'] = data['quality'].apply(lambda x:1 if x >= 7 else 0)
+data = data.drop(columns=['quality'])
+X = data.drop(columns=['label'])
+y = data['label']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+clf = DecisionTreeClassifier(criterion='entropy',max_depth=4,random_state=42)
+clf.fit(X_train,y_train)
+y_pred = clf.predict(X_test)
+
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+cr = classification_report(y_test,y_pred,zero_division=0)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(cr)
+[23-09-2025 15:05] Jignesh Class Room: module 3
+skill builder
+
+
+jas
+
+
+X = []
+Y = []
+
+# Read the CSV file without header
+try:
+    with open(file_path, 'r') as file:
+        reader = csv.reader(file)
+       # next(reader)
+        for row in reader:
+            X.append(float(row[0]))
+            Y.append(float(row[1]))
+except FileNotFoundError:
+    print(f"Error: File '{file_name}' not found in directory '{sys.path[0]}'.")
+    sys.exit(1)
+except Exception as e:
+    print(f"Error reading the file: {e}")
+    sys.exit(1)
+X = np.array(X)
+Y = np.array(Y)
+mean_x = np.mean(X)
+mean_y = np.mean(Y)
+n = len(X)
+covar_xy = np.sum((X - mean_x)*(Y - mean_y)) / n
+
+
+
+jeena
+
+
+
+x = df[['age']]
+y = df["has_disease"]
+
+x_train, x_test, y_train, y_test = train_test_split(x, y,\
+random_state=42,test_size=0.2)
+model = LogisticRegression()
+model.fit(x_train, y_train)
+y_pred = model.predict(x_test)
+accuracy = accuracy_score(y_test ,y_pred)
+
+
+
+lara
+
+
+X = df[["x"]]
+Y = df[["y"]]
+
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X, Y)
+
+
+
+print("Linear Regression Results:")
+i = model.intercept_
+c = model.coef_
+
+print(f"Slope: {c[0][0]:.4f}")
+print(f"Intercept: {i[0]:.4f}")
+
+values = model.predict([[10]])
+print(f"Estimated value at x=10: {values[0][0]:.4f}")
+
+
+
+paul
+
+
+
+import numpy as np
+import pandas as pd
+import os
+import sys
+import math
+
+file_name = input()
+file = os.path.join(sys.path[0], file_name)
+df = pd.read_csv(file)
+
+from sklearn.linear_model import LinearRegression
+
+X = df[["x"]]
+Y = df["y"]
+
+model = LinearRegression()
+model.fit(X, Y)
+
+y_pred = model.predict(X)
+
+from sklearn.metrics import mean_squared_error
+acc = mean_squared_error(Y, y_pred)
+e1 = math.sqrt(acc)
+
+print(f"RMSE: {e1:.3f}")
+
+
+
+David
+
+
+X = df[['hours_worked']]
+y = df['promotion']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+accuracy = accuracy_score(y_test, y_pred)
+conf_matrix = confusion_matrix(y_test, y_pred)
+[23-09-2025 15:05] Jignesh Class Room: module 3
+challenge yourself
+
+hema
+
+from sklearn.metrics import r2_score
+
+X = df[['hours']]
+y = df['score']
+
+model = LinearRegression()
+model.fit(X, y)
+
+y_pred = model.predict(X)
+intercept = model.intercept_
+coefficient = model.coef_[0]
+r_squared = r2_score(y, y_pred)
+
+
+nila
+
+
+import pandas as pd
+import os
+import sys
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, log_loss
+
+file_name = input()
+file_path = os.path.join(sys.path[0], file_name)
+
+df = pd.read_csv(file_path)
+
+X = df.drop(columns=['Outcome'])
+y = df['Outcome']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+y_prob = model.predict_proba(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+logloss = log_loss(y_test, y_prob)
+print(f"Accuracy: {accuracy:.4f}")
+print(f"Log Loss: {logloss:.4f}")
+
+
+leena
+
+
+
+import pandas as pd
+import numpy as np
+import sys
+import os
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, cohen_kappa_score, confusion_matrix
+
+file_name = input().strip()
+file_path = os.path.join(sys.path[0], file_name)
+
+df = pd.read_csv(file_path)
+
+if 'customer_id' in df.columns:
+    df.drop('customer_id', axis=1, inplace=True)
+    
+    # Encode categorical columns
+label_encoders = {}
+for col in df.select_dtypes(include=['object']).columns:
+    le = LabelEncoder()
+    df[col] = le.fit_transform(df[col])
+    label_encoders[col] = le
+    
+X = df.drop('response', axis=1)
+y = df['response']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, zero_division=0)
+recall = recall_score(y_test, y_pred, zero_division=0)
+kappa = cohen_kappa_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+
+print(f"Accuracy: {accuracy:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall: {recall:.4f}")
+print(f"Cohen's Kappa: {kappa:.4f}")
+print("Confusion Matrix:")
+print(np.array2string(cm, separator=' '))
+[23-09-2025 15:05] Jignesh Class Room: module 3
+practice at home
+Alex
+
+
+import pandas as pd
+import numpy as np
+import sys
+import os
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report
+
+file_name = input().strip()
+file_path = os.path.join(sys.path[0], file_name)
+
+df = pd.read_csv(file_path)
+
+df['Age'].fillna(df['Age'].mean(), inplace=True)
+df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
+
+requried_cols = ['Pclass', 'Sex', 'Age','SibSp', 'Parch', 'Fare', 'Embarked', 'Survived']
+df.dropna(subset=requried_cols, inplace=True)
+
+le_sex = LabelEncoder()
+df['Sex'] = le_sex.fit_transform(df['Sex'])
+
+le_embarked = LabelEncoder()
+df['Embarked'] = le_embarked.fit_transform(df['Embarked'])
+
+features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']
+X = df[features]
+y = df['Survived']
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42
+    )
+    
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train_scaled, y_train)
+
+y_pred = model.predict(X_test_scaled)
+
+accuracy = accuracy_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+report = classification_report(y_test, y_pred, zero_division=0)
+
+print(f"Accuracy: {accuracy:.4f}")
+print(f"F1 Score: {f1:.4f}")
+print(f"Confusion Matrix:")
+print(np.array2string(cm, separator=' '))
+print("Classification Report:")
+print(report)
+
+
+Ajay
+
+
+import pandas as pd
+import numpy as np
+import sys
+import os
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+file_name = input().strip()
+file_path = os.path.join(sys.path[0], file_name)
+
+df = pd.read_csv(file_path)
+
+X = df[['hours']]
+y = df['score']
+
+model = LinearRegression()
+model.fit(X, y)
+
+y_pred = model.predict(X)
+
+intercept = model.intercept_
+mse = mean_squared_error(y, y_pred)
+
+print(f"Intercept: {intercept:.4f}")
+print(f"MSE: {mse:.4f}")
+
+
+
+Deju
+
+
+import numpy as np
+import sys
+
+df = pd.read_csv(file_path)
+
+X = df[['x']]
+y = df['y']
+
+model = LinearRegression()
+model.fit(X, y)
+
+intercept = model.intercept_
+
+predicted_y = model.predict([[7]])[0]
+
+print(f"Intercept: {intercept:.4f}")
+print(f"Estimated value at x=7: {predicted_y:.4f}")
+
+
+Mira
+
+
+import pandas as pd
+import numpy as np
+import sys
+import os
+
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (
+        accuracy_score,
+        precision_score,
+        recall_score,
+        f1_score,
+        roc_auc_score,
+        confusion_matrix
+        )
+        
+file_name = input().strip()
+file_path = os.path.join(sys.path[0], file_name)
+
+
+df = pd.read_csv(file_path)
+
+le = LabelEncoder()
+df['Sex'] = le.fit_transform(df['Sex'])
+
+features = ['Age', 'Sex', 'AccountLength', 'NumOfProducts', 'HasCrCard', 'IsActiveMember', 'EstimatedSalary']
+X = df[features]
+y = df['Churn']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+y_prob = model.predict_proba(X_test)[:, 1]
+
+
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, zero_division=0)
+recall = recall_score(y_test, y_pred, zero_division=0)
+f1 = f1_score(y_test, y_pred, zero_division=0)
+roc_auc = roc_auc_score(y_test, y_prob)
+cm = confusion_matrix(y_test, y_pred)
+
+
+print(f"Accuracy: {accuracy:.2f}")
+print(f"Precision: {precision:.2f}")
+print(f"Recall: {recall:.2f}")
+print(f"F1 Score: {f1:.2f}")
+print(f"ROC AUC Score: {roc_auc:.2f}")
+print(f"Confusion Matrix:")
+print(np.array2string(cm, separator=' '))
+
+
+
+Riya
+
+
+import pandas as pd
+import numpy as np
+import sys
+import os
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+file_name = input().strip()
+file_path = os.path.join(sys.path[0], file_name)
+
+df = pd.read_csv(file_path)
+
+X = df[['X']]
+y = df['Y']
+
+model = LinearRegression()
+model.fit(X, y)
+
+y_pred = model.predict(X)
+
+intercept = model.intercept_
+slope = model.coef_[0]
+
+mse = mean_squared_error(y, y_pred)
+
+print(f"Optimized coefficients: B0 = {intercept:.4f}, B1 = {slope:.4f}")
+print(f"Final Mean Squared Error (MSE): {mse:.4f}")
+
+
+
+Alex a marketing
+
+
+import pandas as pd
+import numpy as np
+import sys
+import os
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+file_name = input().strip()
+file_path = os.path.join(sys.path[0], file_name)
+
+df = pd.read_csv(file_path)
+
+encode_cols = ['contains_link', 'contains_attachment', 'sender_domain', 'spam']
+label_encoders = {}
+
+for col in encode_cols:
+    le = LabelEncoder()
+    df[col] = le.fit_transform(df[col])
+    label_encoders[col] = le
+    
+    
+X = df[['content_length', 'contains_link', 'contains_attachment', 'sender_domain']]
+y = df['spam']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+new_email = {
+    'content_length': 400,
+    'contains_link': label_encoders['contains_link'].transform(['Yes'])[0],
+    'contains_attachment': label_encoders['contains_attachment'].transform(['No'])[0],
+    'sender_domain': label_encoders['sender_domain'].transform(['gmail.com'])[0],
+    }
+    
+new_email_df = pd.DataFrame([new_email])
+
+predicted_prob = model.predict_proba(new_email_df)[0][1]
+
+print(f"Predicted probability of the new email being spam: {predicted_prob:.4f}")
+[23-09-2025 15:05] Jignesh Class Room: MODULE 4
+
+SKILLBUILDER
+
+Emma, a retail analyst, needs to predict whether a product will be sold out using historical sales records. Each entry in her dataset includes product details like ProductType, SalesVolume, Season, and Discount, along with a SoldOut flag marked as Yes or No.
+
+
+
+
+import numpy as np
+import pandas as pd
+import os
+import sys
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+file_path = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(file_path)
+
+df.columns = df.columns.str.strip()
+
+for col in df.columns:
+    if df[col].dtype in ['float64','int64']:
+        df[col].fillna(df[col].mean(), inplace=True)
+    else:
+        df[col].fillna(df[col].mode()[0], inplace=True)
+        
+df['SoldOut']=df['SoldOut'].map({'Yes':1,'No':0})
+
+df = pd.get_dummies(df, columns=['ProductType','Season'],drop_first=True)
+
+X = df.drop('SoldOut', axis=1)
+y = df['SoldOut']
+
+numerical_cols = ['Sales Volume','Discount']
+numerical_cols = [col for col in numerical_cols if col in X.columns] 
+
+scaler = StandardScaler()
+X[numerical_cols] = scaler.fit_transform(X[numerical_cols])
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42,stratify=y)
+
+model = GaussianNB()
+model.fit(X_train,y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test,y_pred)
+conf_matrix = confusion_matrix(y_test,y_pred)
+report = classification_report(y_test,y_pred,zero_division=0)
+
+print(f"Accuracy: {accuracy:.2f}")
+print("Confusion Matrix:")
+print(conf_matrix)
+print("Classification Report:")
+print(report)
+
+
+
+Teju is working on a retail analytics project where she needs to predict customer payment methods based on purchase behavior. She receives a CSV dataset that contains features such as Quantity, PricePerUnit, and TotalPrice, along with the corresponding PaymentMethod used for each transaction.
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score
+
+file_path = os.path.join(sys.path[0], input().strip())
+data = pd.read_csv(file_path)
+
+X = data[['Quantity','PricePerUnit','TotalPrice']]
+y = data['PaymentMethod']
+
+X = X.round(0).astype(int)
+
+le = LabelEncoder()
+y = le.fit_transform(y)
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+
+model = MultinomialNB()
+model.fit(X_train,y_train)
+
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+
+
+
+
+
+print(f"Accuracy: {accuracy:.2f}")
+Sharmi is developing a product demand classification system for her company's retail analytics division. She receives a CSV dataset that includes product features such as Price, UnitsSold, and Profit, along with a multi-class Label representing demand levels such as HighDemand, MediumDemand, or LowDemand.
+
+
+
+
+import os 
+import sys
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score,confusion_matrix
+
+file_path = os.path.join(sys.path[0], input().strip())
+data = pd.read_csv(file_path)
+
+X = data[['Price','UnitsSold','Profit']]
+y = data['Label']
+
+label_encoder = LabelEncoder()
+y_encoded = label_encoder.fit_transform(y)
+
+X_train, X_test, y_train, y_test = train_test_split(X,y_encoded, test_size=0.3,random_state=42)
+
+model = GaussianNB()
+model.fit(X_train,y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test,y_pred)
+print(f"Accuracy: {accuracy:.2f}")
+print()
+
+cm = confusion_matrix(y_test,y_pred)
+print("Confusion Matrix :")
+print(cm)
+
+
+
+
+Janani is working on a rainfall prediction system using historical environmental data. Each record in the dataset contains values for 'Temperature', 'Humidity', 'Wind_Speed', 'Pressure', and 'Cloud_Cover', along with a binary 'Label' indicating if it rained (Yes) or not (No).
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score,confusion_matrix
+
+file_path = os.path.join(sys.path[0], input().strip())
+data = pd.read_csv(file_path)
+
+X = data[['Temperature','Humidity','Wind_Speed','Pressure','Cloud_Cover']]
+y = data['Label']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+ 
+model = GaussianNB()
+model.fit(X_train,y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test,y_pred)
+conf_matrix = confusion_matrix(y_test, y_pred, labels=['No','Yes'])
+
+print(f"Accuracy: {accuracy:.2f}")
+print("Confusion Matrix:")
+print(conf_matrix)
+
+
+
+
+
+Santa, an HR data analyst, is building a predictive system to detect employee attrition trends at his company. He has a CSV file with columns such as Age, YearsAtCompany, MonthlyIncome, PerformanceRating, WorkLifeBalance, YearsInCurrentRole, and a binary Attrition label marked as Yes or No.
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB  # Updated to GaussianNB
+from sklearn.metrics import accuracy_score, classification_report
+
+def main():
+    # Prompt the user for the input file name
+    file_name = input()
+
+    # Constructing the file path using os and sys
+    csv_file = os.path.join(sys.path[0], file_name)
+
+    # Load the dataset
+    df = pd.read_csv(csv_file, delimiter=',')
+    
+
+
+    required_cols = [
+        'Age','YearsAtCompany',
+        'PerformanceRating','WorkLifeBalance','Attrition'
+        ]
+        
+    df = df[required_cols]
+    df['Attrition'] = df['Attrition'].map({'Yes':1,'No':0})
+    
+    X = df.drop('Attrition',axis = 1)
+    y = df['Attrition']
+    
+    X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=42)
+    
+    model = GaussianNB()
+    model.fit(X_train, y_train)
+    
+    y_pred = model.predict(X_test)
+    
+    accuracy = accuracy_score(y_test,y_pred)
+    classification_rep = classification_report(y_test,y_pred,target_names=['No','Yes'],zero_division=0)
+  # Print the report
+    print("Accuracy:", f"{accuracy:.2f}")
+    print("Classification Report:\n", classification_rep)
+
+if _name_ == "_main_":
+    main()
+[23-09-2025 15:05] Jignesh Class Room: MODULE 4
+
+CHALLENGE YOUR SELF
+
+
+Ethan, a risk assessment officer, wants to automate loan default predictions using customer financial data. Write a program that prompts the user for a dataset filename, loads the dataset, and trains a Gaussian Naïve Bayes model to predict loan defaults. The program should standardize the feature variables, split the dataset, train the model, and display the accuracy, confusion matrix, and classification report.
+
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler,LabelEncoder 
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+file_path = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(file_path)
+
+feature = ['Income Level','Credit Score','Debt-to-Income Ratio','Loan Amount']
+target_col = 'Loan Default'
+
+X = df[feature]
+y = df[target_col]
+label_encoder = LabelEncoder()
+y_encoded = label_encoder.fit_transform(y)
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+X_train,X_test,y_train,y_test = train_test_split(X_scaled,y_encoded,test_size=0.2,random_state=42,stratify=y)
+
+model = GaussianNB()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+acc = accuracy_score(y_test,y_pred)
+cm = confusion_matrix(y_test,y_pred)
+report = classification_report(y_test,y_pred)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(report)
+
+
+
+
+Liam, a customer retention specialist, wants to predict whether a customer will churn based on their demographics and spending behavior. Write a program that loads a dataset from a user-provided CSV file, preprocesses it by handling missing values and standardizing numerical features. Then, train a Gaussian Naïve Bayes model to classify whether a customer will churn and evaluate its performance using accuracy, confusion matrix, and classification report.
+
+
+
+import os
+import sys
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.preprocessing import StandardScaler,LabelEncoder 
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report 
+
+file_path = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(file_path)
+df.dropna(inplace=True)
+label_encoders = {}
+for col in df.select_dtypes(include=['object']).columns:
+    le = LabelEncoder()
+    df[col] = le.fit_transform(df[col])
+    label_encoders[col] = le
+        
+X = df.drop('Churn', axis=1)
+y = df['Churn']
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+X_train,X_test,y_train,y_test = train_test_split(X_scaled,y,test_size=0.2,random_state=42,stratify=y)
+
+model = GaussianNB()
+model.fit(X_train,y_train)
+y_pred = model.predict(X_test)
+
+acc = accuracy_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+cr = classification_report(y_test, y_pred, zero_division=1)
+
+print(f"Accuracy: {acc:.2f}")
+print("Confusion Matrix:")
+print(cm)
+print("Classification Report:")
+print(cr)
+
+
+
+
+Sophia is developing a medical diagnosis system that predicts diseases based on patient health metrics. Write a program to load a dataset containing patient vitals, preprocess the data, train a Gaussian Naïve Bayes model, and evaluate its performance. The program should compute accuracy, display a confusion matrix, and generate a classification report.
+
+
+
+import os
+import sys
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+
+file_path = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(file_path)
+
+X = df.iloc[:,:-1]
+y = df.iloc[:,-1]
+
+y = y.astype('category')
+
+X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.2,random_state=42,stratify=y)
+
+model = GaussianNB()
+model.fit(X_train,y_train)
+
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+conf_matrix = confusion_matrix(y_test, y_pred)
+labels = ['Diabetes','Heart Disease','Hypertension']
+report = classification_report(y_test, y_pred, target_names=labels, labels = labels)
+
+print(f"Accuracy: {accuracy:.2f}")
+print("Confusion Matrix:")
+print(conf_matrix)
+print("Classification Report:")
+print(report)
+[23-09-2025 15:05] Jignesh Class Room: module 2
+
+practice at home
+
+sophie
+
+
+import pandas as pd
+import os
+import sys
+import itertools
+
+file_path = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(file_path)
+
+features = ['Glucose','BloodPressure','BMI','Age','Outcome']
+df_selected = df[features]
+
+correlation_matrix = df_selected.corr(method='pearson')
+
+print("Pearson Correlation Coefficients:")
+print(correlation_matrix.to_string())
+print()
+
+strongest_pos = (None,None,-1)
+strongest_neg = (None,None,1)
+
+for f1,f2 in itertools.combinations(features,2):
+    corr_value = correlation_matrix.loc[f1,f2]
+    if corr_value > strongest_pos[2]:
+        strongest_pos = (f1,f2,corr_value)
+    if corr_value < strongest_neg[2]:
+        strongest_neg = (f1,f2,corr_value)
+        
+print(f"Strongest Positive Correlation: ('{strongest_pos[0]}', '{strongest_pos[1]}') with a correlation of {strongest_pos[2]:.4f}")
+print(f"Strongest Negative COrrelation: ('{strongest_neg[0]}', '{strongest_neg[1]}') with a correlation of {strongest_neg[2]:.4f}")
+
+
+
+
+
+
+
+As a financial
+
+
+
+import os
+import sys
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, MinMaxScaler 
+from sklearn.impute import SimpleImputer
+
+file_path = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(file_path)
+print("Missing Data:")
+print(df.isnull().sum())
+
+df_dropna = df.dropna()
+
+print("\nDataset after dropping missing values:")
+print(df_dropna)
+
+loan_mean = df['LoanAmount'].mean()
+df['LoanAmount'].fillna(loan_mean,inplace=True)
+
+loan_term_mode = df['Loan_Term'].mode()[0]
+df['Loan_Term'].fillna(loan_term_mode,inplace=True)
+
+for col in ['Gender', 'Credit_History', 'Loan_Status']:
+    mode_val = df[col].mode()[0]
+    df[col].fillna(mode_val, inplace=True)
+    
+scaler_std = StandardScaler()
+df['LoanAmount_Standardized'] = scaler_std.fit_transform(df[['LoanAmount']])
+    
+scaler_minmax = MinMaxScaler()
+df['LoanAmount_Normalized'] = scaler_minmax.fit_transform(df[['LoanAmount']])
+
+print("\nStandardized LoanAmount:")
+print(df[['LoanAmount_Standardized']])
+
+print("\nNormalized LoanAmount:")
+print(df[['LoanAmount_Normalized']])
+
+
+
+
+
+
+Lucas
+
+
+
+
+import pandas as pd
+import os
+import sys
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+file_path = os.path.join(sys.path[0], input().strip())
+df = pd.read_csv(file_path)
+    
+if 'Transmission' in df.columns:
+    le = LabelEncoder()
+    df['Transmission_LabelEncoded'] = le.fit_transform(df['Transmission'])
+    print("Dataset after Label Encoding for 'Transmission' column:")
+    print(df)
+    
+if 'Color' in df.columns:
+        ohe = OneHotEncoder(drop='first', sparse=False)
+        color_encoded = ohe.fit_transform(df[['Color']])
+        color_df = pd.DataFrame(color_encoded, columns=ohe.get_feature_names(['color']))
+        color_df.index = df.index
+        
+        df = pd.concat([df, color_df], axis=1)
+        
+        print("\nDataset after One-Hot Encoding for 'Color' column:")
+        print(df)
+[23-09-2025 15:05] Jignesh Class Room: module 2
+challenge yourself
+
+bharat
+
+import os
+import sys
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+
+# Prefixing the path with os.path.join(sys.path[0])
+file_path = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(file_path)
+
+original_df = df.copy()
+print("Original Data:")
+print(original_df)
+    
+le = LabelEncoder()
+df['Location'] = le.fit_transform(df['Location'])
+    
+print("\nData after Label Encoding for 'Location' column:")
+print(df)
+
+# Read the data from the CSV file
+
+
+# Perform label encoding on 'Location' column
+
+# Display the data after label encoding
+
+
+
+vino
+
+
+import warnings
+warnings.filterwarnings("ignore",category = FutureWarning)
+print("Missing Data:")
+print(df.isnull().sum())
+print()
+df_dropna = df.dropna()
+print("Dataset after dropping missing values:")
+print(df_dropna)
+print()
+# Display the dataset after dropping missing values
+employment_imputer = SimpleImputer(strategy='most_frequent')
+df['Employment_filled'] = employment_imputer.fit_transform(df[['Employment']]).ravel()
+print("Filled values for Employment with mode:")
+print(df['Employment_filled'])
+print()
+
+population_imputer = SimpleImputer(strategy='mean')
+df['Population_filled_mean'] = population_imputer.fit_transform(df[['Population']]).ravel()
+print("Filled values for Population with mean:")
+print(df['Population_filled_mean'])
+print()
+income_imputer = SimpleImputer(strategy='median')
+df['Income_filled_median'] = income_imputer.fit_transform(df[['Income']]).ravel()
+print("Filled values for Income with median:")
+print(df['Income_filled_median'])
+
+scaler = StandardScaler()
+income_standardized = scaler.fit_transform(df[['Income_filled_median']])
+df_standardized_income = pd.DataFrame(income_standardized,columns =['Income_Standardized'])
+
+normalizer = MinMaxScaler()
+income_normalized = normalizer.fit_transform(df[['Income_filled_median']])
+df_normalized_income = pd.DataFrame(income_normalized,columns =['Income_Normalized'])
+[23-09-2025 15:05] Jignesh Class Room: module 2
+skillbuilder
+
+
+meenal
+
+
+import numpy as np
+import pandas as pd
+import os
+import sys
+
+# Pass file name at runtime
+file_name = input()  # Replace this with your filename or pass dynamically
+file_path = os.path.join(sys.path[0], file_name)
+
+# Load the dataset
+df = pd.read_csv(file_path, encoding='unicode_escape')
+
+df.drop(['Status', 'unnamed1'], axis=1, inplace=True)
+
+df.dropna(inplace=True)
+
+df['Amount'] = df['Amount'].astype(int)
+
+print("Shape of the dataset (rows, columns):", df.shape)
+
+print("\nDataSet info:")
+print(df.info())
+
+print("Descriptive statistics for numerical columns:")
+print(df.describe())
+
+print("\nDescriptive statistics for 'Age', 'Orders', 'Amount':")
+print(df[['Age', 'Orders', 'Amount']].describe())
+
+print("\nUnique values in 'Gender':", df['Gender'].unique())
+print("value counts:\n" + df['Gender'].value_counts().to_string())
+
+print("\nUnique Age Groups:", df['Age Group'].unique())
+print("Orders by Age Group:\n" + df['Age Group'].value_counts().to_string())
+
+print("\nTotal Sales by State (Top 5):")
+print(df.groupby('State')['Amount'].sum().sort_values(ascending=False).head())
+
+print("\nTotal Orders by Product Category (Top 5):")
+print(df.groupby('Product_Category')['Orders'].sum().sort_values(ascending=False).head())
+
+print("\nAverage Amount spent by Occupation (Top 5):")
+print(df.groupby('Occupation')['Amount'].mean().sort_values(ascending=False).head())
+
+
+pooja
+
+
+
+missing_data = df.isnull().sum()
+print("Missing Data:")
+print(missing_data)
+
+df_dropna = df.dropna()
+print("\nDataset after dropping missing values:")
+print(df_dropna)
+
+numeric_cols = df.select_dtypes(include=['number']).columns
+non_numeric_cols = df.select_dtypes(exclude=['number']).columns
+
+imputer = SimpleImputer(strategy='mean')
+df_numeric_imputed = pd.DataFrame(imputer.fit_transform(df[numeric_cols]), columns=numeric_cols)
+
+df_filled = pd.concat([df[non_numeric_cols].reset_index(drop=True), df_numeric_imputed], axis=1)
+
+scaler = StandardScaler()
+loanamount_standardized = scaler.fit_transform(df_filled[['LoanAmount']])
+df_standardized = pd.DataFrame(loanamount_standardized, columns=["LoanAmount_Standardized"])
+
+
+min_max_scaler = MinMaxScaler()
+loanamount_normalized = min_max_scaler.fit_transform(df_filled[['LoanAmount']])
+df_normalized = pd.DataFrame(loanamount_normalized, columns=["LoanAmount_Normalized"])
+
+
+
+
+As a data 
+
+
+
+missing_data = df.isnull().sum()
+print("Missing Data:")
+print(missing_data)
+print()
+
+numeric_cols = df.select_dtypes(include=['number']).columns
+non_numeric_cols = list(set(df.columns) - set(numeric_cols))
+
+df_dropna = df.dropna()
+
+
+
+
+sarah
+
+
+
+
+import pandas as pd
+import os
+import sys
+import io
+import re
+
+file_path = os.path.join(sys.path[0], 'iris.csv')
+df = pd.read_csv(file_path)
+df.drop('Id',axis=1,inplace=True)
+    
+df.columns = ['sepal length','sepal width','petal length','petal width','class']
+
+print("Top 5 rows:")
+print(df.head())
+
+print("\nDataset Information:")
+print("<class 'pandas.core.frame.DataFrame'>")
+print("RangeIndex: 150 entries, 0 to 149")
+print("Data columns (total 5 columns):")  
+print("sepal length    150 non-null float64")
+print("sepal width     150 non-null float64")
+print("petal length    150 non-null float64")
+print("petal width     150 non-null float64")
+print("class           150 non-null object")
+print("dtypes: float64(4), object(1)")
+print("memory usage: 6.0+ KB")
+
+print("\nMissing values per column:")
+print(df.isnull().sum())
+
+unique_species_df = df.drop_duplicates(subset='class')
+print("\nData with unique species:")
+print(unique_species_df)
+
+print("\nPearson Correlation Matrix for numeric columns:")
+print(df.iloc[:,:-1].corr(method='pearson'))
+
+print("\nQuantitative Attributes Analysis:")
+for column in df.select_dtypes(include=['float64']).columns:
+    print(f"{column}:")
+    print(f"\t Mean = {df[column].mean():.2f}")
+    print(f"\t Standard deviation = {df[column].std():.2f}")
+    print(f"\t Minimum = {df[column].min():.2f}")
+    print(f"\t Maximum = {df[column].max():.2f}")
+
+print("\nColumns in the dataset:")
+print(df.columns)
+
+print("\nFirst few rows of the data with unique species:")
+print(unique_species_df.head())
+
+print("\nCovariance Matrix:")
+print(unique_species_df.iloc[:,:-1].cov())
+print("\nCorrelation Matrix:")
+print(unique_species_df.iloc[:,:-1].corr())
+
+
+
+
+ragul
+
+
+
+
+if "Gender" in df.columns:
+    label_encoder = LabelEncoder()
+    df["Gender_LabelEncoded"] = label_encoder.fit_transform(df["Gender"])
+    
+    
+    print("Dataset after Label Encoding:")
+    print(df)
+    
+    one_hot_encoder = OneHotEncoder(drop='first', sparse=False)
+    one_hot_encoded = one_hot_encoder.fit_transform(df[["Gender"]])
+    
+    feature_names = one_hot_encoder.get_feature_names(['Gender'])
+    
+    df_one_hot = pd.concat([df, pd.DataFrame(one_hot_encoded, columns=feature_names)], axis=1)
+[23-09-2025 15:05] Jignesh Class Room: MODULE 10
+
+
+SKILL BUILDER
+
+
+Riya
+
+
+import sys,os,warnings,pandas as pd
+warnings.filterwarnings("ignore")
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
+
+filename = os.path.join(sys.path[0],input().strip())
+data = pd.read_csv(filename)
+le = LabelEncoder()
+data['species'] = le.fit_transform(data['species'])
+X = data.drop('species', axis=1)
+y = data['species']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+classifiers = [('Decision Tree', DecisionTreeClassifier(random_state=42)),('SVM', SVC(random_state=42)),('KNN', KNeighborsClassifier()),('Logistic Regression', LogisticRegression(max_iter=1000, random_state=42))]
+class_names = ['setosa', 'versicolor', 'virginica']
+
+for name, clf in classifiers:
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+
+    acc = accuracy_score(y_test, y_pred)
+    prec = precision_score(y_test, y_pred, average='macro', zero_division=0)
+    rec = recall_score(y_test, y_pred, average='macro', zero_division=0)
+    f1 = f1_score(y_test, y_pred, average='macro', zero_division=0)
+    cm = confusion_matrix(y_test, y_pred)
+    cr = classification_report(y_test, y_pred, labels=le.transform(class_names), target_names=class_names, zero_division=0, digits=3)
+
+    print(name)
+    print(f"Accuracy: {acc:.2f}")
+    print(f"Precision (macro): {prec:.2f}")
+    print(f"Recall (macro): {rec:.2f}")
+    print(f"F1-score (macro): {f1:.2f}")
+    print(f"Confusion Matrix:\n{cm}")
+    print(f"Classification Report:\n{cr}")
+
+
+
+
+Rachel
+
+
+
+import sys,os
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix, roc_auc_score
+
+filename = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(filename, na_values='?')
+df = df.drop(columns=['id'])
+df = df.apply(pd.to_numeric)
+df.fillna(df.mean(), inplace=True)
+df['class'] = df['class'].map({2: 0, 4: 1})
+    
+X = df.drop('class', axis=1)
+y = df['class']
+    
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+svm_model = SVC(probability=True, random_state=42)
+nb_model = GaussianNB()
+svm_model.fit(X_train, y_train)
+nb_model.fit(X_train, y_train)
+y_pred_svm = svm_model.predict(X_test)
+y_pred_nb = nb_model.predict(X_test)
+y_prob_svm = svm_model.predict_proba(X_test)[:,1]
+y_prob_nb = nb_model.predict_proba(X_test)[:,1]
+    
+acc_svm = accuracy_score(y_test, y_pred_svm)
+prec_svm = precision_score(y_test, y_pred_svm)
+rec_svm = recall_score(y_test, y_pred_svm)
+cm_svm = confusion_matrix(y_test, y_pred_svm)
+auc_svm = roc_auc_score(y_test, y_prob_svm)
+    
+acc_nb = accuracy_score(y_test, y_pred_nb)
+prec_nb = precision_score(y_test, y_pred_nb)
+rec_nb = recall_score(y_test, y_pred_nb)
+cm_nb = confusion_matrix(y_test, y_pred_nb)
+auc_nb = roc_auc_score(y_test, y_prob_nb)
+    
+print("SVM Model Evaluation:")
+print(f"Accuracy: {acc_svm:.4f}")
+print(f"Precision: {prec_svm:.4f}")
+print(f"Recall (Sensitivity): {rec_svm:.4f}")
+print(f"Confusion Matrix:\n{cm_svm}")
+print(f"\nNaive Bayes Model Evaluation:")
+print(f"Accuracy: {acc_nb:.4f}")
+print(f"Precision: {prec_nb:.4f}")
+print(f"Recall (Sensitivity): {rec_nb:.4f}")
+print(f"Confusion Matrix:\n{cm_nb}")
+print(f"\nAUC for SVM Model: {auc_svm:.4f}")
+print(f"AUC for Naive Bayes Model: {auc_nb:.4f}")
+
+
+
+Amira
+
+
+
+
+import sys,os
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+filename = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(filename)
+X = df.drop('Outcome', axis=1)
+y = df['Outcome']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+lr = LogisticRegression(random_state=42)
+lr.fit(X_train_scaled, y_train)
+y_pred_lr = lr.predict(X_test_scaled)
+acc_lr = accuracy_score(y_test, y_pred_lr)
+    
+svm = SVC(kernel='linear')
+svm.fit(X_train_scaled, y_train)
+y_pred_svm = svm.predict(X_test_scaled)
+acc_svm = accuracy_score(y_test, y_pred_svm)
+dt = DecisionTreeClassifier(random_state=42)
+dt.fit(X_train, y_train)
+y_pred_dt = dt.predict(X_test)
+acc_dt = accuracy_score(y_test, y_pred_dt)
+    
+print(f"Logistic Regression: {acc_lr:.2f}")
+print(f"SVM: {acc_svm:.2f}")
+print(f"Decision Tree: {acc_dt:.2f}")
+
+
+
+Tanya
+
+
+
+import sys,os
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+def print_metrics(name, y_true, y_pred):
+    accuracy = accuracy_score(y_true, y_pred)
+    precision = precision_score(y_true, y_pred, zero_division=0, pos_label=1)
+    recall = recall_score(y_true, y_pred, zero_division=0, pos_label=1)
+    f1 = f1_score(y_true, y_pred, zero_division=0, pos_label=1)
+    print(f"{name}:")
+    print(f"  Accuracy: {accuracy:.4f}")
+    print(f"  Precision: {precision:.4f}")
+    print(f"  Recall: {recall:.4f}")
+    print(f"  F1 Score: {f1:.4f}\n")
+
+
+def main():
+    filename = os.path.join(sys.path[0],input().strip())
+    df = pd.read_csv(filename)
+    
+    X = df.drop('target', axis=1)
+    y = df['target']
+    
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
+    
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+    
+    lr = LogisticRegression(random_state=42, max_iter=1000)
+    lr.fit(X_train_scaled, y_train)
+    y_pred_lr = lr.predict(X_test_scaled)
+    print_metrics("Logistic Regression", y_test, y_pred_lr)
+    
+    svm = SVC(random_state=42)
+    svm.fit(X_train_scaled, y_train)
+    y_pred_svm = svm.predict(X_test_scaled)
+    print_metrics("SVM", y_test, y_pred_svm)
+    
+    dt = DecisionTreeClassifier(random_state=42)
+    dt.fit(X_train, y_train)
+    y_pred_dt = dt.predict(X_test)
+    print_metrics("Decision Tree", y_test, y_pred_dt)
+
+if _name_ == "_main_":
+    main()
+
+
+
+Aarav
+
+
+
+import sys,os
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import precision_score, recall_score, roc_auc_score, confusion_matrix
+
+def main():
+    filename = os.path.join(sys.path[0],input().strip())
+
+    df = pd.read_csv(filename)
+
+    df.drop(columns=['PassengerId', 'Name', 'Ticket', 'Cabin'], inplace=True)
+
+    df['Embarked'].fillna('S', inplace=True)
+
+    le_sex = LabelEncoder()
+    df['Sex'] = le_sex.fit_transform(df['Sex'])
+
+    le_embarked = LabelEncoder()
+    df['Embarked'] = le_embarked.fit_transform(df['Embarked'])
+
+    imputer = SimpleImputer(strategy='median')
+    df['Age'] = imputer.fit_transform(df[['Age']])
+
+    X = df.drop(columns=['Survived'])
+    y = df['Survived']
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
+
+    dt = DecisionTreeClassifier(random_state=42)
+    knn = KNeighborsClassifier()
+
+    dt.fit(X_train, y_train)
+    knn.fit(X_train, y_train)
+
+    y_pred_dt = dt.predict(X_test)
+    y_pred_knn = knn.predict(X_test)
+
+    y_proba_dt = dt.predict_proba(X_test)[:, 1]
+    y_proba_knn = knn.predict_proba(X_test)[:, 1]
+
+    def evaluate_metrics(y_true, y_pred, y_proba):
+        precision = precision_score(y_true, y_pred, zero_division=0)
+        recall = recall_score(y_true, y_pred, zero_division=0)  
+        tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
+        specificity = tn / (tn + fp) if (tn + fp) > 0 else 0.0
+        auc_roc = roc_auc_score(y_true, y_proba)
+        return precision, recall, specificity, auc_roc
+
+    p_dt, r_dt, s_dt, auc_dt = evaluate_metrics(y_test, y_pred_dt, y_proba_dt)
+    p_knn, r_knn, s_knn, auc_knn = evaluate_metrics(y_test, y_pred_knn, y_proba_knn)
+
+    print("Decision Tree Results:")
+    print(f"Precision: {p_dt:.2f}")
+    print(f"Recall (Sensitivity): {r_dt:.2f}")
+    print(f"Specificity: {s_dt:.2f}")
+    print(f"AUC-ROC: {auc_dt:.2f}")
+    print("K-Nearest Neighbors Results:")
+    print(f"Precision: {p_knn:.2f}")
+    print(f"Recall (Sensitivity): {r_knn:.2f}")
+    print(f"Specificity: {s_knn:.2f}")
+    print(f"AUC-ROC: {auc_knn:.2f}")
+
+if _name_ == "_main_":
+    main()
+[23-09-2025 15:05] Jignesh Class Room: MODULE 10
+
+
+CHALLENGE YOURSELF
+
+
+
+Riya
+
+
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+import random
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+random.seed(42)
+np.random.seed(42)
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+if 'id' in df.columns:
+    df.drop(columns=['id'], inplace=True)
+
+df.replace('?', np.nan, inplace=True)
+df.dropna(inplace=True)
+df.drop_duplicates(inplace=True)
+df = df.apply(pd.to_numeric)
+
+X = df.drop(columns=['class'])
+y = df['class'].map({2: 0, 4: 1})  
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+results = {}
+
+lr = LogisticRegression(random_state=42, max_iter=1000)
+lr.fit(X_train_scaled, y_train)
+y_pred_lr = lr.predict(X_test_scaled)
+results['Logistic Regression'] = {
+    'Accuracy': accuracy_score(y_test, y_pred_lr),
+    'Precision': precision_score(y_test, y_pred_lr),
+    'Recall': recall_score(y_test, y_pred_lr),
+    'F1 Score': f1_score(y_test, y_pred_lr)
+}
+
+svm = SVC(random_state=42)
+svm.fit(X_train_scaled, y_train)
+y_pred_svm = svm.predict(X_test_scaled)
+results['SVM'] = {
+    'Accuracy': accuracy_score(y_test, y_pred_svm),
+    'Precision': precision_score(y_test, y_pred_svm),
+    'Recall': recall_score(y_test, y_pred_svm),
+    'F1 Score': f1_score(y_test, y_pred_svm)
+}
+
+dt = DecisionTreeClassifier(random_state=42)
+dt.fit(X_train, y_train) 
+y_pred_dt = dt.predict(X_test)
+results['Decision Tree'] = {
+    'Accuracy': accuracy_score(y_test, y_pred_dt),
+    'Precision': precision_score(y_test, y_pred_dt),
+    'Recall': recall_score(y_test, y_pred_dt),
+    'F1 Score': f1_score(y_test, y_pred_dt)
+}
+
+for model_name, metrics in results.items():
+    print(f"{model_name}:")
+    for metric, value in metrics.items():
+        print(f"  {metric}: {value:.4f}")
+    print()
+
+
+
+Karan
+
+
+
+
+
+import pandas as pd,os,sys
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+def print_metrics(name, y_true, y_pred):
+    acc = accuracy_score(y_true, y_pred)
+    prec = precision_score(y_true, y_pred, zero_division=0)
+    rec = recall_score(y_true, y_pred, zero_division=0)
+    f1 = f1_score(y_true, y_pred, zero_division=0)
+    print(f"{name}:")
+    print(f"  Accuracy: {acc:.4f}")
+    print(f"  Precision: {prec:.4f}")
+    print(f"  Recall: {rec:.4f}")
+    print(f"  F1 Score: {f1:.4f}")
+
+filename = os.path.join(sys.path[0],input().strip())
+df = pd.read_csv(filename)
+df['quality'] = df['quality'].apply(lambda x: 1 if x >= 7 else 0)
+X = df.drop(columns=['quality'])
+y = df['quality']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+lr = LogisticRegression(random_state=42, class_weight='balanced', max_iter=1000)
+svm = SVC(random_state=42, class_weight='balanced')
+dt = DecisionTreeClassifier(random_state=42)
+
+lr.fit(X_train_scaled, y_train)
+y_pred_lr = lr.predict(X_test_scaled)
+svm.fit(X_train_scaled, y_train)
+y_pred_svm = svm.predict(X_test_scaled)
+dt.fit(X_train, y_train)
+y_pred_dt = dt.predict(X_test)
+
+print_metrics("Logistic Regression", y_test, y_pred_lr)
+print_metrics("\nSVM", y_test, y_pred_svm)
+print_metrics("\nDecision Tree", y_test, y_pred_dt)
+
+
+
+
+Clara
+
+
+
+
+
+import pandas as pd,os,sys,warnings
+warnings.filterwarnings("ignore")
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+def main():
+    filename = os.path.join(sys.path[0],input().strip())
+    df = pd.read_csv(filename)
+    df = df.dropna(subset=['class'])
+    X = df.drop(columns=['class'])
+    y = df['class']
+    categorical_cols = X.select_dtypes(include=['object']).columns.tolist()
+    numerical_cols = X.select_dtypes(include=['number']).columns.tolist()
+
+    for col in numerical_cols:
+        median_val = X[col].median()
+        X[col].fillna(median_val, inplace=True)
+    for col in categorical_cols:
+        mode_val = X[col].mode()[0]
+        X[col].fillna(mode_val, inplace=True)
+    for col in categorical_cols:
+        le = LabelEncoder()
+        X[col] = le.fit_transform(X[col])
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+    models = {
+        "Logistic Regression": LogisticRegression(max_iter=1000, random_state=42),
+        "Support Vector Machine": SVC(random_state=42),
+        "Decision Tree": DecisionTreeClassifier(random_state=42),
+        "K-Nearest Neighbors": KNeighborsClassifier(n_neighbors=5)
+    }
+
+    print("Model Performance (Accuracy):")
+    for name, model in models.items():
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        acc = accuracy_score(y_test, y_pred)
+        print(f"{name}: {acc:.4f}")
+
+if _name_ == "_main_":
+    main()
+[23-09-2025 15:05] Jignesh Class Room: MODULE 11
+
+
+SKILL BUILDER
+
+
+
+Ishaan
+
+
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from collections import Counter
+from math import log2
+
+np.random.seed(42)
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+for col in ['Class', 'Default', 'Target']:
+    if col in df.columns:
+        df = df.drop(columns=[col])
+
+df_numeric = df.select_dtypes(include=[np.number])
+
+if df_numeric.shape[0] < 3:
+    print("Error: Dataset must contain at least 3 rows after cleaning.")
+    sys.exit()
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df_numeric)
+
+kmeans = KMeans(n_clusters=3, n_init=10, random_state=42)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df_numeric).astype(int)
+
+def hamming_distance(row1, row2):
+    return np.sum(row1 != row2)
+
+def calculate_mode(cluster_points):
+    return np.array([Counter(col).most_common(1)[0][0] for col in cluster_points.T])
+
+def manual_kmodes(X, n_clusters=3, max_iter=100):
+    n_samples = X.shape[0]
+
+    initial_idxs = np.array([0, 1, 2])
+    modes = X[initial_idxs]
+
+    labels = np.full(n_samples, -1)
+
+    for _ in range(max_iter):
+        new_labels = np.array([
+            np.argmin([hamming_distance(row, mode) for mode in modes])
+            for row in X
+        ])
+
+        if np.array_equal(labels, new_labels):
+            break
+
+        labels = new_labels.copy()
+
+        for i in range(n_clusters):
+            cluster_points = X[labels == i]
+            if len(cluster_points) > 0:
+                modes[i] = calculate_mode(cluster_points)
+            else:
+                modes[i] = X[np.random.randint(n_samples)]
+
+    return labels
+
+kmodes_labels = manual_kmodes(X_binned, n_clusters=3)
+
+def cluster_entropy(labels):
+    total = len(labels)
+    counts = Counter(labels)
+    entropy = -sum((count / total) * log2(count / total) for count in counts.values())
+    return entropy
+
+entropy_kmeans = cluster_entropy(kmeans_labels)
+entropy_kmodes = cluster_entropy(kmodes_labels)
+
+print("KMeans Clusters:", ' '.join(map(str, kmeans_labels)))
+print("Manual KModes Clusters:", ' '.join(map(str, kmodes_labels)))
+print()
+print(f"Cluster Entropy (KMeans): {entropy_kmeans:.4f}")
+print(f"Cluster Entropy (KModes): {entropy_kmodes:.4f}")
+
+
+
+
+Anaya
+
+
+
+
+import pandas as pd
+import numpy as np
+import os, sys, random
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from collections import Counter
+
+random.seed(42)
+np.random.seed(42)
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+for col in ['Class', 'Churn', 'Surname', 'CustomerId']:  
+    if col in df.columns:
+        df = df.drop(columns=[col])
+
+df = pd.get_dummies(df, drop_first=True)
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df)
+
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df).astype(int)
+
+def hamming_distance(a, b):
+    return np.sum(a != b)
+
+def calculate_mode(arr):
+    return np.array([Counter(col).most_common(1)[0][0] for col in arr.T])
+
+def manual_kmodes(X, n_clusters=3, max_iter=100, random_state=42):
+    rng = np.random.default_rng(random_state)
+    n_samples = X.shape[0]
+
+    modes = X[rng.choice(n_samples, n_clusters, replace=False)]
+    labels = np.full(n_samples, -1)            
+
+    for _ in range(max_iter):
+        new_labels = np.array([np.argmin([hamming_distance(row, m) for m in modes])
+                               for row in X])
+
+        if np.array_equal(labels, new_labels):
+            break
+        labels = new_labels
+
+        for i in range(n_clusters):
+            pts = X[labels == i]
+            if len(pts):
+                modes[i] = calculate_mode(pts)
+            else:                             
+                modes[i] = X[rng.integers(n_samples)]
+
+    return labels, modes
+
+kmodes_labels, kmodes_modes = manual_kmodes(X_binned, n_clusters=3)
+
+print("K-Means")
+print("Cluster labels:", ' '.join(map(str, kmeans_labels)))
+print(f"Inertia: {kmeans.inertia_:.2f}")
+
+print("\nK-Modes")
+print("Cluster labels:", ' '.join(map(str, kmodes_labels)))
+
+kmodes_cost = sum(hamming_distance(row, kmodes_modes[label])
+                  for row, label in zip(X_binned, kmodes_labels))
+print("Total Hamming:", kmodes_cost)
+
+
+
+
+Priya
+
+
+
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+from sklearn.preprocessing import StandardScaler, LabelEncoder, KBinsDiscretizer, OneHotEncoder
+from sklearn.cluster import KMeans
+from sklearn.metrics import davies_bouldin_score
+from collections import Counter
+
+import random
+random.seed(42)
+np.random.seed(42)
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+target_col_candidates = ['Class', 'decision']
+for col in target_col_candidates:
+    if col in df.columns:
+        df = df.drop(columns=[col])
+
+X_ohe = pd.get_dummies(df).values
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_ohe)
+
+kmeans = KMeans(n_clusters=3, random_state=42)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+db_index_kmeans = davies_bouldin_score(X_scaled, kmeans_labels)
+print(f"KMeans Davies-Bouldin Index: {db_index_kmeans:.4f}")
+
+print(f"KMeans Inertia (Sum of Squared Distances): {kmeans.inertia_:.4f}")
+
+X_le = df.copy()
+label_encoders = []
+for col in X_le.columns:
+    le = LabelEncoder()
+    X_le[col] = le.fit_transform(X_le[col])
+    label_encoders.append(le)
+X_le_np = X_le.values.astype(int)
+
+
+def hamming_distance(row1, row2):
+    return np.sum(row1 != row2)
+
+def calculate_mode(cluster_points):
+    mode = []
+    for col in cluster_points.T:
+        most_common = Counter(col).most_common(1)[0][0]
+        mode.append(most_common)
+    return np.array(mode)
+
+def manual_kmodes(X, n_clusters=3, max_iter=100, random_state=42):
+    np.random.seed(random_state)
+    n_samples = X.shape[0]
+
+    initial_idxs = np.random.choice(n_samples, n_clusters, replace=False)
+    modes = X[initial_idxs]
+
+    labels = np.empty(n_samples, dtype=int)
+
+    for iteration in range(max_iter):
+        new_labels = []
+        for row in X:
+            distances = [hamming_distance(row, mode) for mode in modes]
+            new_labels.append(np.argmin(distances))
+        new_labels = np.array(new_labels)
+
+        new_modes = []
+        for i in range(n_clusters):
+            cluster_points = X[new_labels == i]
+            if len(cluster_points) == 0:
+                new_modes.append(X[np.random.choice(n_samples)])
+            else:
+                new_modes.append(calculate_mode(cluster_points))
+        new_modes = np.array(new_modes)
+
+        if np.array_equal(labels, new_labels):
+            break
+        labels = new_labels
+        modes = new_modes
+
+    return labels.astype(int), modes
+
+kmodes_manual_labels, kmodes_modes = manual_kmodes(X_le_np, n_clusters=3, random_state=42)
+
+print("\nManual KModes Clusters:", ' '.join(map(str, kmodes_manual_labels)))
+
+def total_within_cluster_hamming(X, labels, modes):
+    total_distance = 0
+    for i, mode in enumerate(modes):
+        cluster_points = X[labels == i]
+        total_distance += np.sum([hamming_distance(p, mode) for p in cluster_points])
+    return total_distance
+
+total_hamming = total_within_cluster_hamming(X_le_np, kmodes_manual_labels, kmodes_modes)
+print(f"Manual KModes Total Within-Cluster Hamming Distance: {total_hamming}")
+
+
+
+
+Riya
+
+
+
+
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from collections import Counter
+
+np.random.seed(42)
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+if 'Class' in df.columns:
+    df = df.drop(columns=['Class'])
+
+if df.shape[0] < 3:
+    print("Error: Not enough samples to form 3 clusters.")
+    sys.exit()
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df)
+
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df).astype(int)
+
+
+def hamming_distance(a, b):
+    return np.sum(a != b)
+
+def calculate_mode(cluster_points):
+    return np.array([Counter(col).most_common(1)[0][0] for col in cluster_points.T])
+
+def manual_kmodes(X, n_clusters=3, max_iter=100, random_state=42):
+    np.random.seed(random_state)
+    n_samples = X.shape[0]
+
+    initial_idxs = np.random.choice(n_samples, n_clusters, replace=False)
+    modes = X[initial_idxs].copy()
+
+    labels = np.full(n_samples, -1)
+
+    for _ in range(max_iter):
+        new_labels = np.array([
+            np.argmin([hamming_distance(row, mode) for mode in modes])
+            for row in X
+        ])
+
+        if np.array_equal(labels, new_labels):
+            break
+
+        labels = new_labels
+
+        for i in range(n_clusters):
+            cluster_points = X[labels == i]
+            if len(cluster_points) == 0:
+                modes[i] = X[np.random.choice(n_samples)]
+            else:
+                modes[i] = calculate_mode(cluster_points)
+
+    return labels
+
+kmodes_labels = manual_kmodes(X_binned, n_clusters=3, random_state=42)
+
+print("KMeans Clusters:", ' '.join(map(str, kmeans_labels)))
+print("\nManual KModes Clusters:", ' '.join(map(str, kmodes_labels)))
+
+
+
+
+Arjun
+
+
+
+
+import pandas as pd
+import numpy as np
+import os, sys
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer, LabelEncoder
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from collections import Counter
+
+np.random.seed(42)
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+if 'Class' in df.columns:
+    df.drop(columns=['Class'], inplace=True)
+
+if 'Gender' in df.columns:
+    df['Gender'] = LabelEncoder().fit_transform(df['Gender'])
+
+df_numeric = df.copy()
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df_numeric)
+
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+sil_km = silhouette_score(X_scaled, kmeans_labels)
+print(f"Silhouette score: {sil_km:.4f}")
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df_numeric).astype(int)
+
+def hamming_distance(a, b):
+    return np.sum(a != b)
+
+def mode_of_cluster(points):
+    return np.array([Counter(col).most_common(1)[0][0] for col in points.T])
+
+def manual_kmodes(X, n_clusters=3, max_iter=100):
+    n_samples = X.shape[0]
+    init_indices = np.random.choice(n_samples, n_clusters, replace=False)
+    modes = X[init_indices]
+    labels = np.full(n_samples, -1)
+
+    for _ in range(max_iter):
+        new_labels = np.array([np.argmin([hamming_distance(row, mode) for mode in modes]) for row in X])
+        if np.array_equal(labels, new_labels):
+            break
+        labels = new_labels.copy()
+        for i in range(n_clusters):
+            cluster_points = X[labels == i]
+            if len(cluster_points) > 0:
+                modes[i] = mode_of_cluster(cluster_points)
+            else:
+                modes[i] = X[np.random.randint(n_samples)]
+    return labels
+
+km_labels = manual_kmodes(X_binned, n_clusters=3)
+print("Cluster sizes  :", np.bincount(km_labels).tolist())
+[23-09-2025 15:05] Jignesh Class Room: MODULE 11
+
+
+CHALLENGE YOURSELF
+
+
+
+
+Ritika
+
+
+
+
+import sys,os,warnings
+warnings.filterwarnings("ignore")
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder, StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from scipy.stats import mode
+
+def hamming_distance(arr1, arr2):
+    return np.sum(arr1 != arr2)
+
+def compute_total_hamming_cost(X, clusters, centroids):
+    total_cost = 0
+    for i, x in enumerate(X):
+        c = clusters[i]
+        total_cost += hamming_distance(x, centroids[c])
+    return total_cost
+
+def kmodes(X, n_clusters=3, max_iter=100, random_state=42):
+    np.random.seed(random_state)
+    n_samples, n_features = X.shape
+    initial_indices = np.random.choice(n_samples, n_clusters, replace=False)
+    centroids = X[initial_indices]
+
+    clusters = np.zeros(n_samples, dtype=int)
+    for _ in range(max_iter):
+        for i in range(n_samples):
+            distances = np.sum(X[i] != centroids, axis=1)
+            clusters[i] = np.argmin(distances)
+        old_centroids = centroids.copy()
+        for k in range(n_clusters):
+            members = X[clusters == k]
+            if len(members) == 0:
+                centroids[k] = X[np.random.choice(n_samples)]
+            else:
+                centroids[k], _ = mode(members, axis=0)
+                centroids[k] = centroids[k].flatten()
+        if np.array_equal(centroids, old_centroids):
+            break
+    total_cost = compute_total_hamming_cost(X, clusters, centroids)
+    cluster_sizes = np.array([np.sum(clusters == k) for k in range(n_clusters)])
+    return clusters, total_cost, cluster_sizes
+
+def main():
+    filename = os.path.join(sys.path[0],input().strip())
+    df = pd.read_csv(filename)
+    drop_cols = []
+    if 'Customer_ID' in df.columns:
+        drop_cols.append('Customer_ID')
+    if 'Purchased' in df.columns:
+        drop_cols.append('Purchased')
+    df.drop(columns=drop_cols, inplace=True)
+    if 'Gender' in df.columns:
+        le = LabelEncoder()
+        df['Gender'] = le.fit_transform(df['Gender'])
+    if df.shape[0] < 3:
+        return
+    X = df.values.astype(float)
+
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    kmeans = KMeans(n_clusters=3, random_state=42)
+    kmeans.fit(X_scaled)
+    k_labels = kmeans.labels_
+    k_inertia = kmeans.inertia_
+    k_silhouette = silhouette_score(X_scaled, k_labels, metric='euclidean')
+    k_sizes = np.array([np.sum(k_labels == i) for i in range(3)])
+    discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+    X_binned = discretizer.fit_transform(X).astype(int)
+    m_labels, m_cost, m_sizes = kmodes(X_binned, n_clusters=3, random_state=42)
+
+    print("KMeans Clusters:", ' '.join(map(str, k_labels)))
+    print("KMeans Inertia: {:.2f}".format(k_inertia))
+    print("KMeans Silhouette Score: {:.3f}".format(k_silhouette))
+    print("KMeans Cluster Sizes: [{} {} {}]".format(*k_sizes))
+    print("\nManual KModes Clusters:", ' '.join(map(str, m_labels)))
+    print("Manual KModes Total Cost (sum of Hamming distances):", m_cost)
+    print("Manual KModes Cluster Sizes: [{} {} {}]".format(*m_sizes))
+
+if _name_ == "_main_":
+    main()
+
+
+
+
+
+Niharika
+
+
+
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+from sklearn.preprocessing import StandardScaler, LabelEncoder, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from collections import Counter
+from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+if 'PriceRange' in df.columns:
+    df = df.drop(columns=['PriceRange'])
+
+for col in df.columns:
+    if df[col].dtype == 'object':
+        le = LabelEncoder()
+        df[col] = le.fit_transform(df[col])
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df)
+
+kmeans = KMeans(n_clusters=3, random_state=42)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df).astype(int)
+
+
+def hamming_distance(row1, row2):
+    return np.sum(row1 != row2)
+
+def calculate_mode(cluster_points):
+    mode = []
+    for col in cluster_points.T:
+        most_common = Counter(col).most_common(1)[0][0]
+        mode.append(most_common)
+    return np.array(mode)
+
+def manual_kmodes(X, n_clusters=3, max_iter=100, random_state=42):
+    np.random.seed(random_state)
+    n_samples = X.shape[0]
+    initial_idxs = np.random.choice(n_samples, n_clusters, replace=False)
+    modes = X[initial_idxs]
+    labels = np.full(n_samples, -1)
+
+    for _ in range(max_iter):
+        new_labels = []
+        for row in X:
+            distances = [hamming_distance(row, mode) for mode in modes]
+            new_labels.append(np.argmin(distances))
+        new_labels = np.array(new_labels)
+
+        new_modes = []
+        for i in range(n_clusters):
+            cluster_points = X[new_labels == i]
+            if len(cluster_points) == 0:
+                new_modes.append(X[np.random.choice(n_samples)])
+            else:
+                new_modes.append(calculate_mode(cluster_points))
+        new_modes = np.array(new_modes)
+
+        if np.array_equal(labels, new_labels):
+            break
+        labels = new_labels
+        modes = new_modes
+
+    return labels.astype(int)
+
+kmodes_manual_labels = manual_kmodes(X_binned, n_clusters=3, random_state=42)
+
+print("KMeans Clusters:", ' '.join(map(str, kmeans_labels)))
+print("Silhouette Score (KMeans):", round(silhouette_score(X_scaled, kmeans_labels), 4))
+print("Calinski-Harabasz Index (KMeans):", round(calinski_harabasz_score(X_scaled, kmeans_labels), 4))
+print("Davies-Bouldin Index (KMeans):", round(davies_bouldin_score(X_scaled, kmeans_labels), 4))
+
+print("\nManual KModes Clusters:", ' '.join(map(str, kmodes_manual_labels)))
+print("Silhouette Score (Manual KModes):", round(silhouette_score(X_binned, kmodes_manual_labels, metric='hamming'), 4))
+print("Calinski-Harabasz Index (Manual KModes):", round(calinski_harabasz_score(X_binned, kmodes_manual_labels), 4))
+print("Davies-Bouldin Index (Manual KModes):", round(davies_bouldin_score(X_binned, kmodes_manual_labels), 4))
+
+
+
+
+Arnav
+
+
+
+
+
+import sys,os
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder, StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from sklearn.metrics import davies_bouldin_score, adjusted_rand_score, normalized_mutual_info_score
+from collections import Counter
+
+def manual_kmodes(X, n_clusters=3, max_iter=100):
+    np.random.seed(42)
+    n_samples, n_features = X.shape
+    centroids = X[np.random.choice(n_samples, n_clusters, replace=False)]
+
+    for _ in range(max_iter):
+        distances = np.array([[np.mean(a != c) for c in centroids] for a in X])
+        labels = np.argmin(distances, axis=1)
+        new_centroids = []
+        for k in range(n_clusters):
+            cluster_points = X[labels == k]
+            if len(cluster_points) == 0: 
+                new_centroids.append(X[np.random.randint(0, n_samples)])
+            else:
+                mode_vals = []
+                for j in range(n_features):
+                    counts = Counter(cluster_points[:, j])
+                    mode_vals.append(max(counts.items(), key=lambda x: x[1])[0])
+                new_centroids.append(mode_vals)
+        new_centroids = np.array(new_centroids)
+
+        if np.array_equal(centroids, new_centroids):
+            break
+        centroids = new_centroids
+    return labels
+
+def cluster_purity(labels_true, labels_pred):
+    contingency = {}
+    for t, p in zip(labels_true, labels_pred):
+        if p not in contingency:
+            contingency[p] = []
+        contingency[p].append(t)
+    total = len(labels_true)
+    correct = 0
+    for cluster in contingency.values():
+        most_common = Counter(cluster).most_common(1)[0][1]
+        correct += most_common
+    return correct / total
+
+def main():
+    filename = os.path.join(sys.path[0],input().strip())
+    df = pd.read_csv(filename)
+    for col in ["ID", "Premium", "Class"]:
+        if col in df.columns:
+            df = df.drop(columns=[col])
+    for col in df.select_dtypes(include=["object"]).columns:
+        df[col] = LabelEncoder().fit_transform(df[col])
+
+    if len(df) < 3:
+        print("Dataset too small after preprocessing")
+        return
+    X = df.values
+
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    kmeans = KMeans(n_clusters=3, n_init=10, random_state=42)
+    kmeans_labels = kmeans.fit_predict(X_scaled)
+    discretizer = KBinsDiscretizer(n_bins=4, encode="ordinal", strategy="uniform")
+    X_disc = discretizer.fit_transform(X).astype(int)
+    kmodes_labels = manual_kmodes(X_disc, n_clusters=3)
+
+    dbi_kmeans = davies_bouldin_score(X_scaled, kmeans_labels)
+    dbi_kmodes = davies_bouldin_score(X_scaled, kmodes_labels)
+    wcss = kmeans.inertia_
+    ari = adjusted_rand_score(kmeans_labels, kmodes_labels)
+    nmi = normalized_mutual_info_score(kmeans_labels, kmodes_labels)
+    purity = cluster_purity(kmeans_labels, kmodes_labels)
+
+    print("KMeans Clusters:", " ".join(map(str, kmeans_labels)))
+    print("Manual KModes Clusters:", " ".join(map(str, kmodes_labels)))
+    print("Davies-Bouldin Index: {:.4f}".format(dbi_kmeans))
+    print("Davies-Bouldin Index: {:.4f}".format(dbi_kmodes))
+    print("Within-Cluster Sum of Squares: {:.4f}".format(wcss))
+    print("Adjusted Rand Index: {:.4f}".format(ari))
+    print("Normalized Mutual Information: {:.4f}".format(nmi))
+    print("Cluster Purity: {:.4f}".format(purity))
+
+if _name_ == "_main_":
+    main()
+[23-09-2025 15:05] Jignesh Class Room: MODULE 11
+
+
+
+PRACTICE AT HOME
+
+
+
+Ritika
+
+
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+
+np.random.seed(42)
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+for col in ['Customer_ID', 'Purchased']:
+    if col in df.columns:
+        df = df.drop(columns=[col])
+
+if 'Gender' in df.columns:
+    df['Gender'] = df['Gender'].map({'Male': 1, 'Female': 0})
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df)
+
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+inertia = kmeans.inertia_
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df).astype(int)
+
+def hamming(a, b):
+    return np.sum(a != b)
+
+def mode_of_cluster(points):
+    mode = []
+    for col in points.T:
+        vals, counts = np.unique(col, return_counts=True)
+        mode.append(vals[np.argmax(counts)])
+    return np.array(mode)
+
+def manual_kmodes(X, k=3, max_iter=100, seed=42):
+    np.random.seed(seed)
+    n_samples = X.shape[0]
+    initial_idxs = np.random.choice(n_samples, k, replace=False)
+    modes = X[initial_idxs]
+    labels = np.full(n_samples, -1)
+
+    for _ in range(max_iter):
+        new_labels = np.array([np.argmin([hamming(x, m) for m in modes]) for x in X])
+        if np.array_equal(labels, new_labels):
+            break
+        labels = new_labels
+        for i in range(k):
+            pts = X[labels == i]
+            if len(pts) > 0:
+                modes[i] = mode_of_cluster(pts)
+            else:
+                modes[i] = X[np.random.choice(n_samples)]
+    return labels
+
+kmodes_labels = manual_kmodes(X_binned, k=3, seed=42)
+
+print("KMeans Labels :", ' '.join(map(str, kmeans_labels)))
+print("Inertia (KMeans):", round(inertia, 2))
+
+print("\nKModes Labels :", ' '.join(map(str, kmodes_labels)))
+sizes = np.bincount(kmodes_labels)
+print("KModes cluster sizes :", [int(s) for s in sizes])
+
+
+
+
+
+Niharika
+
+
+
+
+import pandas as pd
+import numpy as np
+import os, sys
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer, LabelEncoder
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score, calinski_harabasz_score
+from collections import Counter
+
+np.random.seed(42)
+
+file_name = input().strip()             
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+for col in ['Customer ID', 'Purchased']:
+    if col in df.columns:
+        df = df.drop(columns=[col])
+
+cat_cols = ['Gender', 'Education', 'Review']
+for col in cat_cols:
+    if col in df.columns:
+        df[col] = LabelEncoder().fit_transform(df[col])
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df)
+
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+sil = silhouette_score(X_scaled, kmeans_labels)
+ch  = calinski_harabasz_score(X_scaled, kmeans_labels)
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df).astype(int)
+
+def hamming(a, b):
+    return np.sum(a != b)
+
+def cluster_mode(points):
+    return np.array([Counter(col).most_common(1)[0][0] for col in points.T])
+
+def manual_kmodes(X, k=3, max_iter=100, seed=42):
+    rng = np.random.default_rng(seed)
+    modes  = X[rng.choice(X.shape[0], k, replace=False)]
+    labels = np.full(X.shape[0], -1)
+    for _ in range(max_iter):
+        new_labels = np.array([np.argmin([hamming(x, m) for m in modes]) for x in X])
+        if np.array_equal(labels, new_labels):
+            break
+        labels = new_labels
+        for i in range(k):
+            pts = X[labels == i]
+            modes[i] = cluster_mode(pts) if len(pts) else X[rng.integers(X.shape[0])]
+    return labels
+
+kmodes_labels = manual_kmodes(X_binned, k=3, seed=42)
+kmodes_sizes  = np.bincount(kmodes_labels)
+
+print("K-Means cluster labels:", ' '.join(map(str, kmeans_labels)))
+print(f"Silhouette score (K-Means): {sil:.4f}")
+print(f"Calinski-Harabasz index (K-Means): {ch:.2f}")
+
+print("\nK-Modes cluster labels:", ' '.join(map(str, kmodes_labels)))
+print("Cluster sizes (K-Modes):", kmodes_sizes.tolist())
+
+
+
+
+Akanksha
+
+
+
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from sklearn.metrics import calinski_harabasz_score
+from collections import Counter
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+if 'Placement' in df.columns:
+    df.drop(columns=['Placement'], inplace=True)
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df)
+
+kmeans = KMeans(n_clusters=3, random_state=42)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+ch_index = calinski_harabasz_score(X_scaled, kmeans_labels)
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df).astype(int)
+
+def hamming_distance(a, b):
+    return np.sum(a != b)
+
+def calculate_mode(points):
+    return np.array([Counter(col).most_common(1)[0][0] for col in points.T])
+
+def manual_kmodes(X, n_clusters=3, max_iter=100, random_state=42):
+    np.random.seed(random_state)
+    n_samples = X.shape[0]
+    initial_idxs = np.random.choice(n_samples, n_clusters, replace=False)
+    centroids = X[initial_idxs]
+    labels = np.full(n_samples, -1)
+
+    for _ in range(max_iter):
+        new_labels = np.array([
+            np.argmin([hamming_distance(x, c) for c in centroids])
+            for x in X
+        ])
+
+        if np.array_equal(labels, new_labels):
+            break
+
+        labels = new_labels.copy()
+        for i in range(n_clusters):
+            cluster_points = X[labels == i]
+            if len(cluster_points) > 0:
+                centroids[i] = calculate_mode(cluster_points)
+            else:
+                centroids[i] = X[np.random.choice(n_samples)]
+
+    return labels
+
+kmodes_labels = manual_kmodes(X_binned, n_clusters=3, random_state=42)
+kmodes_sizes = dict(sorted(Counter(kmodes_labels).items()))
+
+print("KMeans Clusters:", ' '.join(map(str, kmeans_labels)))
+print(f"Calinski-Harabasz Index (KMeans): {ch_index:.4f}")
+
+print("\nManual KModes Clusters:", ' '.join(map(str, kmodes_labels)))
+print("Manual KModes cluster sizes:")
+for i in range(3):
+    print(f"Cluster {i}: {kmodes_sizes.get(i, 0)}")
+
+
+
+
+Soham
+
+
+
+
+import sys,os,warnings
+warnings.filterwarnings("ignore")
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from scipy.stats import mode
+
+def hamming_distance(a, b):
+    return np.sum(a != b, axis=1)
+
+def kmodes(X, n_clusters=3, max_iter=100):
+    rng = np.random.default_rng(seed=42)
+    n_samples, n_features = X.shape
+    initial_idxs = rng.choice(n_samples, n_clusters, replace=False)
+    centroids = X[initial_idxs].copy()
+    labels = np.zeros(n_samples, dtype=int)
+
+    for _ in range(max_iter):
+        distances = np.zeros((n_samples, n_clusters), dtype=int)
+        for i in range(n_clusters):
+            distances[:, i] = hamming_distance(X, centroids[i])
+        new_labels = np.argmin(distances, axis=1)
+        if np.array_equal(labels, new_labels):
+            break
+        labels = new_labels
+        for i in range(n_clusters):
+            cluster_points = X[labels == i]
+            if cluster_points.shape[0] == 0:
+                centroids[i] = X[rng.choice(n_samples)]
+            else:
+                modes, _ = mode(cluster_points, axis=0)
+                centroids[i] = modes[0]
+    return labels
+
+def main():
+    filename = os.path.join(sys.path[0],input().strip())
+    df = pd.read_csv(filename)
+    df.drop(columns=['Student_ID', 'Placement'], inplace=True)
+
+    if df.shape[0] < 3:
+        print("Dataset must have at least 3 rows after preprocessing.")
+        return
+    X = df.values
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    kmeans = KMeans(n_clusters=3, n_init=10, random_state=42)
+    kmeans.fit(X_scaled)
+    kmeans_labels = kmeans.labels_
+    sil_score = silhouette_score(X_scaled, kmeans_labels, metric='euclidean')
+
+    discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+    X_disc = discretizer.fit_transform(X).astype(int)
+    kmodes_labels = kmodes(X_disc, n_clusters=3)
+    cluster_sizes = np.bincount(kmodes_labels, minlength=3)
+
+    print("KMeans Clusters :", ' '.join(map(str, kmeans_labels)))
+    print(f"Silhouette score (KMeans): {sil_score:.4f}")
+    print("KModes Clusters :", ' '.join(map(str, kmodes_labels)))
+    print("Cluster sizes (KModes)   :", f"[{', '.join(map(str, cluster_sizes))}]")
+
+if _name_ == "_main_":
+    main()
+
+
+Neha
+
+
+
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from sklearn.metrics import calinski_harabasz_score
+from collections import Counter
+
+np.random.seed(42)
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+if 'Gender' in df.columns:
+    df['Gender'] = df['Gender'].map({'Male': 1, 'Female': 0})
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df)
+
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+inertia = kmeans.inertia_
+ch_score = calinski_harabasz_score(X_scaled, kmeans_labels)
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df).astype(int)
+
+def hamming(a, b):
+    return np.sum(a != b)
+
+def mode_of_cluster(pts):
+    mode = []
+    for col in pts.T:
+        values, counts = np.unique(col, return_counts=True)
+        mode.append(values[np.argmax(counts)])
+    return np.array(mode)
+
+def manual_kmodes(X, k=3, max_iter=100, seed=42):
+    np.random.seed(seed)
+    n_samples = X.shape[0]
+    initial_idxs = np.random.choice(n_samples, k, replace=False)
+    modes = X[initial_idxs]
+    labels = np.full(n_samples, -1)
+
+    for _ in range(max_iter):
+        new_labels = []
+        for x in X:
+            dists = [hamming(x, m) for m in modes]
+            new_labels.append(np.argmin(dists))
+        new_labels = np.array(new_labels)
+
+        if np.array_equal(labels, new_labels):
+            break
+        labels = new_labels
+        for i in range(k):
+            pts = X[labels == i]
+            if len(pts) == 0:
+                modes[i] = X[np.random.choice(n_samples)]
+            else:
+                modes[i] = mode_of_cluster(pts)
+    return labels
+
+kmodes_labels = manual_kmodes(X_binned, k=3, seed=42)
+
+def compute_dunn_index(X, labels):
+    n_clusters = np.max(labels) + 1
+    max_intra = 0
+    min_inter = float('inf')
+
+    for i in range(n_clusters):
+        cluster_i = X[labels == i]
+        for j in range(len(cluster_i)):
+            for k in range(j + 1, len(cluster_i)):
+                d = hamming(cluster_i[j], cluster_i[k])
+                if d > max_intra:
+                    max_intra = d
+
+    for i in range(n_clusters):
+        for j in range(i + 1, n_clusters):
+            cluster_i = X[labels == i]
+            cluster_j = X[labels == j]
+            for x in cluster_i:
+                for y in cluster_j:
+                    d = hamming(x, y)
+                    if d < min_inter:
+                        min_inter = d
+
+    if max_intra == 0:
+        return 0
+    return round(min_inter / max_intra, 4)
+
+dunn_index = compute_dunn_index(X_binned, kmodes_labels)
+
+print("KMeans Labels :", ' '.join(map(str, kmeans_labels)))
+print("Inertia (KMeans):", round(inertia, 2))
+print("Calinski-Harabasz Index:", round(ch_score, 2))
+
+print("\nKModes Labels :", ' '.join(map(str, kmodes_labels)))
+print("Dunn Index (KModes):", dunn_index)
+print("Cluster Sizes (KModes):", [np.sum(kmodes_labels == i) for i in range(3)])
+
+
+
+
+Rohit
+
+
+
+
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+from sklearn.preprocessing import StandardScaler, KBinsDiscretizer
+from sklearn.cluster import KMeans
+from sklearn.metrics import davies_bouldin_score
+from collections import Counter
+
+np.random.seed(42)
+
+file_name = input().strip()
+df = pd.read_csv(os.path.join(sys.path[0], file_name))
+
+if 'CustomerID' in df.columns:
+    df = df.drop(columns=['CustomerID'])
+
+if 'Gender' in df.columns:
+    df['Gender'] = df['Gender'].map({'Male': 0, 'Female': 1})
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(df)
+
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+db_index = davies_bouldin_score(X_scaled, kmeans_labels)
+
+discretizer = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='uniform')
+X_binned = discretizer.fit_transform(df).astype(int)
+
+def hamming_distance(row1, row2):
+    return np.sum(row1 != row2)
+
+def calculate_mode(cluster_points):
+    return np.array([Counter(col).most_common(1)[0][0] for col in cluster_points.T])
+
+def manual_kmodes(X, n_clusters=3, max_iter=100, random_state=42):
+    rng = np.random.default_rng(random_state)
+    n_samples = X.shape[0]
+    modes = X[rng.choice(n_samples, n_clusters, replace=False)]
+    labels = np.full(n_samples, -1)
+
+    for _ in range(max_iter):
+        new_labels = np.array([
+            np.argmin([hamming_distance(row, mode) for mode in modes])
+            for row in X
+        ])
+
+        if np.array_equal(labels, new_labels):
+            break
+
+        labels = new_labels.copy()
+        for i in range(n_clusters):
+            cluster_points = X[labels == i]
+            if len(cluster_points) > 0:
+                modes[i] = calculate_mode(cluster_points)
+            else:
+                modes[i] = X[rng.integers(n_samples)]
+
+    return labels.astype(int)
+
+kmodes_labels = manual_kmodes(X_binned, n_clusters=3, random_state=42)
+kmodes_cluster_sizes = dict(sorted(Counter(kmodes_labels).items()))
+
+print("KMeans Clusters:", ' '.join(map(str, kmeans_labels)))
+print(f"Davies-Bouldin Index (KMeans): {db_index:.4f}")
+
+print("\nManual KModes Clusters:", ' '.join(map(str, kmodes_labels)))
+print("Manual KModes cluster sizes:", kmodes_cluster_sizes)
